@@ -1,0 +1,43 @@
+
+
+.admin-container {
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.admin-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.admin-form input {
+    width: 374px;
+    height: 48px;
+    margin-top: 5px;
+    padding: 20px;
+}
+
+.admin-item {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-button {
+    width: 120px;
+    height: 48px;
+    background: #833AE0;
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    border: none;
+}
+

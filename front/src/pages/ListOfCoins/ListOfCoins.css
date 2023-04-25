@@ -1,0 +1,62 @@
+.to-home {
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 109%;
+/* or 11px */
+
+display: flex;
+align-items: center;
+/* text-decoration-line: underline; */
+
+color: #B1ABAB;
+}
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10%;
+    outline: none;
+}
+.list a{
+    /* background-color: black; */
+    text-decoration-line: none;
+}
+
+.list-coins{
+    display: flex;
+    width: 374px;
+    height: 120px;
+    /* background-color: red; */
+    margin-top: 52px;
+    gap: 30px;
+}
+
+.list-title{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+color: #833AE0;
+
+
+}
+.list-image{
+    width: 120px;
+    height: 120px;
+    outline: none;
+    user-select: none;
+}
+a:focus,
+button:focus,
+input:focus {
+  outline: none;
+}
+
+.list-short-desc{
+    margin-top: 12px;
+    font-size: 12px;
+    color: black;
+}

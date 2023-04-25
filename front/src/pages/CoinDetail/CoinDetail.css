@@ -1,0 +1,99 @@
+.detail-coins {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.detail-image-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.detail-image {
+    width: 300px;
+    height: 300px;
+    outline: none;
+}
+
+.detail-containet-details {
+    width: 452px;
+    height: 624;
+    background: rgba(196, 196, 196, 0.5);
+}
+
+.detail-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.detail-short-desc {
+    margin-top: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 125%;
+    /* or 15px */
+    
+    
+    color: #000000;
+}
+
+.container-otstup {
+    display: flex;
+    flex-direction: column;
+    /* align-content: space-between; */
+    justify-content: space-between;
+
+    margin: 43px;
+    height: 624px;
+}
+
+.table-detail {
+    margin-top: 40px;
+    
+}
+
+.table-detail td {
+    width: 183px;
+    height: 20px;
+    padding: 6px;
+    gap: 1px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 105.2%;
+
+    color: #000000;
+}
+
+.table-detail tr:nth-child(odd) {
+    background-color: white;
+}
+
+.back-to{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 12px;
+display: flex;
+align-items: center;
+text-decoration-line: underline;
+
+color: #000000;
+margin-top: auto;
+}
+
+
+
+  

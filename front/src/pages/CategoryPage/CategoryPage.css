@@ -1,0 +1,22 @@
+.categories {
+    margin-top: 85px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-image {
+    width: 214px;
+    height: 214px;
+}
+
+
+.category-name {
+    margin-bottom: 45px;
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.advance span{
+    border-bottom:solid 1px black ;
+    margin-right:5px ;
+}

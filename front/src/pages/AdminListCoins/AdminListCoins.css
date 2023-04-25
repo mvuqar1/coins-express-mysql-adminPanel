@@ -1,0 +1,58 @@
+.admin-list {
+    display: flex;
+    width: 674px;
+    height: 120px;
+    margin-top: 25px;
+}
+
+.admin-list-left {
+    display: flex;
+    width: 374px;
+    height: 120px;
+    margin-top: 52px;
+    gap: 30px;
+}
+
+.admin-list-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #833AE0;
+}
+
+.admin-list-image {
+    width: 120px;
+    height: 120px;
+    outline: none;
+    user-select: none;
+}
+
+.admin-list-short-desc {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 125.5%;
+    margin-top: 5px;
+    width: 210px;
+    /* or 15px */
+
+
+    color: #000000;
+}
+
+.admin-list-right {
+    display: flex;
+    width: 274px;
+    height: 48px;
+    justify-content: space-between;
+    margin-top: 52px;
+}
+
+.admin-list-right button {
+    width: 120px;
+    background: #E1E1E1;
+    border: none;
+}

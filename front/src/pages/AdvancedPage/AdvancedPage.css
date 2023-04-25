@@ -1,0 +1,42 @@
+.advance-container {
+    margin-top: 25px;
+    display: flex;
+}
+
+.advance-item {
+    margin-bottom: 20px;
+}
+
+.advance-p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 109%;
+}
+
+.advance-select {
+    font-size: 20px;
+    width: 374px;
+    height: 48px;
+    border: 1px solid #000000;
+    margin-top: 5px;
+}
+
+.righ {
+    margin-left: 30px;
+}
+
+.advance-right-item{
+    margin-bottom: 12px;
+}
+
+.from-to input {
+    margin: 8px;
+    width: 155px;
+    height: 48px;
+    left: 495px;
+    top: 265px;
+
+    border: 1px solid #000000;
+}
