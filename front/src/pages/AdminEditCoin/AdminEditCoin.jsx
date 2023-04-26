@@ -36,7 +36,7 @@ export default function AdminEditCoin() {
             <h1>Admin Panel</h1>
             <div className="edit-datails">
                 {coin && coin.length > 0 && coin.map((item) => (
-                    <form className='edit-form' >
+                    <form className='edit-form'key={(item.id)} >
 
                         <div className="edit-details-left">
                             <div className="edit-detail">
