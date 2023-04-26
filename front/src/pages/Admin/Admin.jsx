@@ -36,7 +36,7 @@ export default function Admin() {
             <input type="password" id="password" value={password} onChange={handlePasswordChange} />
           </div>
 
-          <button className='admin-button' type="submit">Sign in</button>
+          <button className='blue-button' type="submit">Sign in</button>
 
         </form>
       </div>

@@ -11,6 +11,7 @@ import CoinDetail from './pages/CoinDetail/CoinDetail';
 import SearchPage from './pages/SearchPage.jsx/SearchPage';
 import Admin from './pages/Admin/Admin';
 import AdminList from './pages/AdminList/AdminList';
+import AdminEditCoin from './pages/AdminEditCoin/AdminEditCoin';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/all/:title' element={<SearchPage />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/admin/list' element={<AdminList />} />
+          <Route path='/admin/list/edit/:id' element={<AdminEditCoin />} />
         </Routes>
       </BrowserRouter>
     </div>

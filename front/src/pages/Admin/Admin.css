@@ -28,7 +28,7 @@
     flex-direction: column;
 }
 
-.admin-button {
+.blue-button {
     width: 120px;
     height: 48px;
     background: #833AE0;
@@ -40,4 +40,8 @@
     line-height: 16px;
     border: none;
 }
-
+.grey-button {
+    width: 120px;
+    background: #E1E1E1;
+    border: none;
+}

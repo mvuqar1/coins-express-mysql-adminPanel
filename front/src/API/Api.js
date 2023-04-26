@@ -27,10 +27,32 @@ const getCoins = async (categoryId, searchQuery) => {
 }
 
 const getSearch = async (title) => {
-    const res = await fetch(`${baseUrl}/all/${title}`);
+    const res = await fetch(`${baseUrl}/search/${title}`);
     const data = await res.json();
     console.log(data)
     return data
 
 }
-export {getAllCoins,getCategories,getCoins,getDetail,getSearch}
+
+const getCoin = async (id) => {
+      const res = await fetch(`${baseUrl}/all/${id}`)
+      const data = await res.json()
+      return data
+  }
+
+
+const deleteCoin = async (id) => {
+    try {
+      const res = await fetch(`${baseUrl}/all/${id}`, {
+        method: 'DELETE'
+      })
+      const data = await res.json()
+      console.log(data)
+      // здесь можно обновить список элементов, чтобы отобразить удаленный элемент
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+
+export {getAllCoins,getCategories,getCoins,getCoin,getDetail,getSearch,deleteCoin}

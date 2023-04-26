@@ -67,7 +67,7 @@ app.get('/categories/:id/:coinId', (req, res) => {
     connection.query(
         `SELECT * FROM coins WHERE id = ${id}`, (err, data) => {
             if (!err) {
-                console.log("data: ", data)
+                // console.log("data: ", data)
                 res.json(data)
             } else {
                 res.status(500).json()
@@ -88,7 +88,20 @@ app.get('/all/', (req, res) => {
       }
     );
   });
-app.get('/all/:title', (req, res) => {
+
+  app.get('/all/:id', (req, res) => {
+    const id = req.params.id;
+    connection.query(
+      `SELECT * FROM coins WHERE id = ${id}`,(err, data) => {
+        if (!err) {
+          res.json(data);
+        } else {
+          res.status(500).json();
+        }
+      }
+    );
+  });
+app.get('/search/:title', (req, res) => {
     const title = req.params.title.toLowerCase();
   
     connection.query(
@@ -96,6 +109,19 @@ app.get('/all/:title', (req, res) => {
       (err, data) => {
         if (!err) {
           // console.log("data: ", data);
+          res.json(data);
+        } else {
+          res.status(500).json();
+        }
+      }
+    );
+  });
+
+  app.delete('/all/:id', (req, res) => {
+    const id = req.params.id;
+    connection.query(
+      `DELETE FROM coins WHERE id = ${id}`,(err, data) => {
+        if (!err) {
           res.json(data);
         } else {
           res.status(500).json();

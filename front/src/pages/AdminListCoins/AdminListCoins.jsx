@@ -1,35 +1,53 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import "./AdminListCoins.css"
+import { deleteCoin } from '../../API/Api'
 
 export default function AdminListCoins(props) {
-    const {coins}=props
+  const navigate=useNavigate()
+  const { coins } = props
+  const [deletedCoinId, setDeletedCoinId] = useState(null)
+
+
+  const adminEditCoin=(item)=>{
+    navigate(`/admin/list/edit/${item.id}`)
+
+    
+  }
+  const btnId = (id) => {
+    deleteCoin(id)
+      .then(() => setDeletedCoinId(id))
+  }
+   
   return (
     <>
-    {coins.map(item => (
+      {coins.map(item => {
+        if (item.id === deletedCoinId) {
+          // do not render the deleted coin
+          return null
+        }
+        return (
+          <div className="admin-list" key={item.id} >
+            <div className="admin-list-left">
+              <div>
+                <img className="admin-list-image" src={item.image} alt="category pic" />
+              </div>
+              <div>
+                {/* go to CoinDetail */}
+                <Link to={`/categories/${item.category_id}/${item.id}`}>
+                  <p className="admin-list-title">{item.title}</p>
+                </Link>
 
-<div className="admin-list" key={item.id} >
-  <div className="admin-list-left">
-  <div>
-    <img className="admin-list-image" src={item.image} alt="category pic" />
-  </div>
-  <div>
-    {/* go to CoinDetail */}
-    <Link to={`/categories/${item.category_id}/${item.id}`}>
-      <p className="admin-list-title">{item.title}</p>
-    </Link>
-
-    <p className="admin-list-short-desc">{item.short_desc}</p>
-  </div>
-  </div>
-  <div className='admin-list-right'>
-    <button >Edit</button>
-      <button>Delete</button>
-  </div>
-</div>
-
-))
-}
+                <p className="admin-list-short-desc">{item.short_desc}</p>
+              </div>
+            </div>
+            <div className='admin-list-right'>
+              <button className='grey-button' onClick={()=>adminEditCoin(item)}>Edit</button>
+              <button className='grey-button' onClick={() => btnId(item.id)}>Delete</button>
+            </div>
+          </div>
+        )
+      })}
     </>
   )
 }

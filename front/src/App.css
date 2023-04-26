@@ -24,3 +24,23 @@ h1 {
 
   color: #000000;
 }
+
+.blue-button {
+  width: 120px;
+  height: 48px;
+  background: #833AE0;
+  color: white;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  border: none;
+}
+
+.grey-button {
+  width: 120px;
+  height: 48px;
+  background: #E1E1E1;
+  border: none;
+}
