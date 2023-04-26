@@ -29,7 +29,7 @@ const ListOfCoins = () => {
 
             <div className="list">
                 {coins.map(item => (
-                    //go to CoinDetail
+                    //go to CoinDetail     gategory/id/:coinId
                         <Link to={`${item.id}`} key={item.id}>
                             <div className="list-coins" >
                             <div>

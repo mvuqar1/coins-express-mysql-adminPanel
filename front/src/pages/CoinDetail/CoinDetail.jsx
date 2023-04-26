@@ -6,20 +6,19 @@ import "./CoinDetail.css"
 export default function CoinDetail() {
   const [products, setProducts] = useState([])
   const { id, coinId } = useParams()
-  console.log(id, coinId)
+
+
   useEffect(() => {
     getDetail(id, coinId).then(data => {
       setProducts(data)
     })
-
   }, [id, coinId])
 
 
   return (
-
     <div className="detail-list">
-      {products.map(item => (
 
+      {products.map(item => (
         <div className="detail-coins" key={item.id}>
           <div className='detail-image-container'>
             <img className="detail-image" src={item.image} alt="category pic" />
@@ -28,8 +27,8 @@ export default function CoinDetail() {
           <div className='detail-containet-details'>
             <div className="container-otstup">
               <div><p className="detail-title">{item.title}</p>
-              <p className="detail-short-desc">{item.short_desc}</p>
-              <p className="detail-short-desc">{item.description}</p></div>
+                <p className="detail-short-desc">{item.short_desc}</p>
+                <p className="detail-short-desc">{item.description}</p></div>
               <div><table className='table-detail'>
                 <tr>
                   <td>Issuing Country</td>
@@ -63,10 +62,9 @@ export default function CoinDetail() {
               <div className="back-to-container"><Link className='back-to' to={`/categories/${id}`}>Back to the list</Link></div>
             </div>
           </div>
-        </div>
-
-      ))
+        </div>))
       }
+
     </div>
   )
 }

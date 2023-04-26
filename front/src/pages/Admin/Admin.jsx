@@ -3,23 +3,22 @@ import "./Admin.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function Admin() {
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
   const navigate=useNavigate()
-
-  const handleLoginChange = (event) => {
-    setLogin(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+  const [coin, setCoin] = useState([])
+  
+  const handleInputChange = (event) => {
+       const { name, value } = event.target;
+       setCoin((coin) => ({
+         ...coin,
+         [name]: value,
+       }));
+     };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate("/admin/list")
-    
-    console.log(`Login: ${login}, Password: ${password}`);
+  
+    console.log(`Login: ${coin.login}, Password: ${coin.password}`);
   };
 
   return (
@@ -29,11 +28,11 @@ export default function Admin() {
         <form className="admin-form" onSubmit={handleSubmit}>
           <div className="admin-item">
             <label htmlFor="login">Login</label>
-            <input type="text" id="login" value={login} onChange={handleLoginChange} />
+            <input type="text" name="login" value={coin.login} onChange={handleInputChange} />
           </div>
           <div className="admin-item">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+            <input type="password" name="password" value={coin.password} onChange={handleInputChange} />
           </div>
 
           <button className='blue-button' type="submit">Sign in</button>
