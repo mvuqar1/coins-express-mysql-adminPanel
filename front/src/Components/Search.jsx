@@ -17,7 +17,7 @@ export default function Search() {
     const submitFormHandler = (e) => {
         e.preventDefault()
         if(search!==""){
-            navigate(`/all/${search}`)
+            navigate(`/search/${search}`)
         }
         
         
