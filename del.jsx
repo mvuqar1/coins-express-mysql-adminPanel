@@ -99,3 +99,29 @@
 // INSERT INTO `final_project`.`coins` (`title`, `short_desc`, `description`, `image`, `image2`, `category_id`, `issuing_country`, `composition`, `quality`, `denomination`, `year`, `weight`, `price`) VALUES ('Theobroma Cocoa', 'Coin with a lion in the center of the shield. Ghana coin, published in 1967.', 'The reverse depicts a runaway lion in the center of a shield divided into four parts, separating the date and the face value. The inscription at the top of the coin is TWENTY', 'https://firebasestorage.googleapis.com/v0/b/lahiye5.appspot.com/o/Theobroma%20Cocoa_1.png?alt=media&token=f245a6e0-881f-4904-a808-9ad2640391fc', 'https://firebasestorage.googleapis.com/v0/b/lahiye5.appspot.com/o/Theobroma%20Cocoa_2.png?alt=media&token=99c9a3b1-c458-4638-a3af-6371bd2015d3', '1', 'Ghana', 'steel', 'BU', '20 pesewas', '1962', '4.76', '54');
 // INSERT INTO `final_project`.`coins` (`title`, `short_desc`, `description`, `image`, `image2`, `category_id`, `issuing_country`, `composition`, `quality`, `denomination`, `year`, `weight`, `price`) VALUES ('Coin of the Weimar Republic', 'The Hindenburg Coin with the coat of arms of the Weimar Republic.', 'On the obverse, in the center of the coin, at the top is the coat of arms of the Weimar Republic. In the center below is the coat of arms of the Hindenburg family. This is a shield divided into 4 fields - in the upper left and lower right corners there is a head of a bull.', 'https://firebasestorage.googleapis.com/v0/b/lahiye5.appspot.com/o/Coin%20of%20the%20Weimar%20Republic_1.png?alt=media&token=ee0a8804-0a90-49bc-bca0-ffced1551d0a', 'https://firebasestorage.googleapis.com/v0/b/lahiye5.appspot.com/o/Coin%20of%20the%20Weimar%20Republic_2.png?alt=media&token=5719ccd0-db03-492c-8c87-e95a09e42709', '1', 'the Weimar Republic', 'silver', 'BU', '5 Mark', '1927', '4.76', '142');
 // INSERT INTO `final_project`.`coins` (`title`, `short_desc`, `description`, `image`, `image2`, `category_id`, `issuing_country`, `composition`, `quality`, `denomination`, `year`, `weight`, `price`) VALUES ('Scientist', 'Silver Egyptian coin with the image of the god Thoth. Silver Egyptian coin.', 'Face value one pound. It has been produced since 1981.', 'https://firebasestorage.googleapis.com/v0/b/lahiye5.appspot.com/o/Scientist_1.png?alt=media&token=75e1e4d1-5308-49cd-bc10-335c9f07f478', 'https://firebasestorage.googleapis.com/v0/b/lahiye5.appspot.com/o/Scientist_2.png?alt=media&token=cb55d5ac-d651-4b23-bcb8-fd1597669bc6', '1', 'Egypt', ' silver', 'BU', '1 pound', '1981', '3.95', '112');
+
+
+
+// CREATE TABLE `final_project`.`text` (
+//     `id` INT NOT NULL AUTO_INCREMENT,
+//     `text_id` INT NOT NULL,
+//     `context` TEXT(500) NULL,
+//     PRIMARY KEY (`id`),
+//     INDEX `text_id_idx` (`text_id` ASC) VISIBLE,
+//     CONSTRAINT `text_id`
+//       FOREIGN KEY (`text_id`)
+//       REFERENCES `final_project`.`coins` (`id`)
+//       ON DELETE NO ACTION
+//       ON UPDATE NO ACTION);
+  
+
+
+
+
+
+
+
+
+
+[[],[]]
+

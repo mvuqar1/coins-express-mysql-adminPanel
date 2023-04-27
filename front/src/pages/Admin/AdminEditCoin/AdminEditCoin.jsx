@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import "./AdminEditCoin.css"
-import { getCoin } from '../../API/Api'
+import { getCoin, putCoin } from '../../../API/Api'
 import { useNavigate } from 'react-router-dom';
 
 export default function AdminEditCoin() {
     const navigate = useNavigate()
-    const [coin, setCoin] = useState([])
+    const [coin, setCoin] = useState("")
     
     const param = useParams()
 
@@ -22,12 +22,20 @@ export default function AdminEditCoin() {
     }
 
     const handleInputChange = (event) => {
-        console.log(event)
         const { name, value } = event.target;
-        setCoin((coin) => ({
-          ...coin,
-          [name]: value,
-        }));
+
+        setCoin(coin =>( [{
+            ...coin[0],
+            [name]: value
+        }]));
+      };
+    const handleSubmit = (e,id) => {
+        e.preventDefault()
+        const object=coin[0]
+        
+        putCoin(id,object)
+        navigate("/admin/list")
+
       };
       
 
@@ -35,8 +43,8 @@ export default function AdminEditCoin() {
         <div className='edit-containet'>
             <h1>Admin Panel</h1>
             <div className="edit-datails">
-                {coin && coin.length > 0 && coin.map((item) => (
-                    <form className='edit-form'key={(item.id)} >
+                {coin && coin.map((item) => (
+                    <form className='edit-form'key={(item.id)} onSubmit={(e)=>handleSubmit(e, item.id)} >
 
                         <div className="edit-details-left">
                             <div className="edit-detail">
@@ -51,48 +59,48 @@ export default function AdminEditCoin() {
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Year of issue</label>
-                                <input name='year' type="text" value={item.year} />
+                                <input name='year' type="text" value={item.year}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Price</label>
-                                <input name='price' type="text" value={item.price}/>
+                                <input name='price' type="text" value={item.price}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Country</label>
-                                <input name='issuing_country' type="text"  value={item.issuing_country}/>
+                                <input name='issuing_country' type="text"  value={item.issuing_country}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Metal</label>
-                                <input name='composition' type="text" value={item.composition} />
+                                <input name='composition' type="text" value={item.composition}  onChange={(e) => handleInputChange(e)} />
                             </div>
                         </div>
                         <div className="edit-details-center">
                             <div className="edit-detail-large">
                                 <label htmlFor="name">Short description</label>
-                                <input name='short_desc' type="text" value={item.short_desc}/>
+                                <input name='short_desc' type="text" value={item.short_desc}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail-large">
                                 <label htmlFor="name">Long description</label>
-                                <input name='description' type="text" value={item.description}/>
+                                <input name='description' type="text" value={item.description}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Quality of the coin</label>
-                                <input name='quality' type="text" value={item.quality}/>
+                                <input name='quality' type="text" value={item.quality}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Weight</label>
-                                <input name='weight' type="text" value={item.weight}/>
+                                <input name='weight' type="text" value={item.weight}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                         </div>
                         <div className="edit-details-right">
                             <div>
                                 <div className="edit-detail">
                                     <label htmlFor="name">Link to obverse image</label>
-                                    <input name='image' type="text" value={item.image}/>
+                                    <input name='image' type="text" value={item.image}  onChange={(e) => handleInputChange(e)}/>
                                 </div>
                                 <div className="edit-detail">
                                     <label htmlFor="name">Link to reverse image</label>
-                                    <input name='image2' type="text" value={item.image2}/>
+                                    <input name='image2' type="text" value={item.image2}  onChange={(e) => handleInputChange(e)}/>
                                 </div>
                             </div>
                             <div className='edit-btn-container'>

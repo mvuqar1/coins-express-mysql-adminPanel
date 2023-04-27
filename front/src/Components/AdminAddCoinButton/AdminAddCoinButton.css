@@ -1,0 +1,30 @@
+.add-coin-container a {
+    margin-top: 80px;
+    display: flex;
+    gap: 25px;
+    width: 300px;
+    text-decoration: none;
+}
+
+.add-round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+}
+
+.add-link {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 109%;
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+
+    color: #000000;
+
+}

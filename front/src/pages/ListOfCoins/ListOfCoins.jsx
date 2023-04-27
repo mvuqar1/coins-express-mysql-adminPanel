@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getCoins } from '../../API/Api'
 import "./ListOfCoins.css"
-import Search from "../../Components/Search"
+import Search from "../../Components/Search/Search"
 
 
 const ListOfCoins = () => {
@@ -30,7 +30,7 @@ const ListOfCoins = () => {
             <div className="list">
                 {coins.map(item => (
                     //go to CoinDetail     gategory/id/:coinId
-                        <Link to={`${item.id}`} key={item.id}>
+                        <Link to={`/products/${item.id}`} key={item.id}>
                             <div className="list-coins" >
                             <div>
                                 <img className="list-image" src={item.image} alt="category pic" />

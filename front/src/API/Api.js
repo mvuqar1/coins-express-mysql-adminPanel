@@ -53,6 +53,40 @@ const deleteCoin = async (id) => {
       console.log(error)
     }
   }
-  
 
-export {getAllCoins,getCategories,getCoins,getCoin,getDetail,getSearch,deleteCoin}
+
+  const putCoin = async (id,coin) => {
+    console.log(id,coin)
+    // const coinObject = coin[0]
+    try {
+      const res = await fetch(`${baseUrl}/all/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(coin)
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const postCoin = async (coin) => {
+ 
+    try {
+      const res = await fetch(`${baseUrl}/all`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(coin)
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+export {getAllCoins,getCategories,getCoins,getCoin,getDetail,getSearch,deleteCoin,putCoin,postCoin}

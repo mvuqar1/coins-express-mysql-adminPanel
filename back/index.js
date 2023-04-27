@@ -137,6 +137,44 @@ app.delete('/all/:id', (req, res) => {
   );
 });
 
+app.put('/all/:id', (req, res) => {
+  const id = +req.params.id;
+  const coin = req.body; // данные монеты, переданные в теле запроса
+
+  connection.query(
+    `UPDATE coins SET ? WHERE id = ?`, 
+    [coin, id], // передача списка значений в запросе
+    (err, result) => {
+      if (!err) {
+        if (result.affectedRows === 0) {
+          res.status(404).json({ error: 'Coin not found' });
+        } else {
+          res.status(200).json(result);
+        }
+      } else {
+        console.log(err);
+        res.status(500).json({ error: 'Error updating coin' });
+      }
+    }
+  );
+});
+app.post('/all', (req, res) => {
+  const coin = req.body; // данные монеты, переданные в теле запроса
+
+  connection.query(
+    'INSERT INTO coins SET ?', 
+    coin, // передача объекта с данными монеты в запросе
+    (err, result) => {
+      if (!err) {
+        res.status(201).json({ message: 'Coin added successfully', coin });
+      } else {
+        console.log(err);
+        res.status(500).json({ error: 'Error adding coin' });
+      }
+    }
+  );
+});
+
 
 
 

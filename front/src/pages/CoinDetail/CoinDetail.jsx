@@ -59,7 +59,7 @@ export default function CoinDetail() {
                   <td>{item.price} $</td>
                 </tr>
               </table></div>
-              <div className="back-to-container"><Link className='back-to' to={`/categories/${id}`}>Back to the list</Link></div>
+              <div className="back-to-container"><Link className='back-to' to={`/categories/${item.category_id}`}>Back to the list</Link></div>
             </div>
           </div>
         </div>))

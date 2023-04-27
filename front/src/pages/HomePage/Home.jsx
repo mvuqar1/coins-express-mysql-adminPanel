@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getCategories } from '../../API/Api'
 import './Home.css';
-import Search from "../../Components/Search";
+import Search from "../../Components/Search/Search";
 import arrow from "./img/arrow.png"
 import AdvancedPage from "../AdvancedPage/AdvancedPage";
 import CategoryPage from "../CategoryPage/CategoryPage";

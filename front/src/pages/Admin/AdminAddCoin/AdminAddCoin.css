@@ -1,0 +1,72 @@
+.add-datails {
+    margin-top: 25px;
+    width: 1182px;
+    height: 508px;
+    /* background-color: antiquewhite; */
+}
+
+.add-form {
+    display: flex;
+    gap: 30px;
+
+}
+
+.add-detail {
+    display: flex;
+    flex-direction: column;
+    width: 374px;
+    height: 68px;
+    margin-bottom: 20px;
+}
+
+.add-detail label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 109%;
+    color: #000000;
+}
+
+.add-detail input {
+    padding: 3px;
+    margin-top: 5px;
+    height: 47.75px;
+}
+
+.add-detail-large {
+    display: flex;
+    flex-direction: column;
+    width: 374px;
+    height: 156px;
+    margin-bottom: 20px;
+}
+
+.add-detail-large label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 109%;
+    color: #000000;
+}
+
+.add-detail-large input {
+    padding: 3px;
+    margin-top: 5px;
+    height: 353.75px;
+}
+
+.add-btn-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.add-details-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
