@@ -8,6 +8,7 @@ export default function AdminAddCoin() {
   const navigate = useNavigate()
   const [coin, setCoin] = useState([{
     title: '',
+    category_id: '',
     year: '',
     price: '',
     issuing_country: '',
@@ -59,11 +60,9 @@ export default function AdminAddCoin() {
                 <label htmlFor="name">Coin name</label>
                 <input name='title' value={item.title} type="text" onChange={(e) => handleInputChange(e)} />
               </div>
-
-              {/* {} */}
               <div className="add-detail">
-                <label htmlFor="name">Face value</label>
-                <input name='face' type="text" />
+                <label htmlFor="name">Category id</label>
+                <input name='category_id' type="text" valuy={item.category_id} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="add-detail">
                 <label htmlFor="name">Year of issue</label>

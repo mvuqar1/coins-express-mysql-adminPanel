@@ -44,6 +44,7 @@ export default function AdminEditCoin() {
             <h1>Admin Panel</h1>
             <div className="edit-datails">
                 {coin && coin.map((item) => (
+                    
                     <form className='edit-form'key={(item.id)} onSubmit={(e)=>handleSubmit(e, item.id)} >
 
                         <div className="edit-details-left">
@@ -51,11 +52,9 @@ export default function AdminEditCoin() {
                                 <label htmlFor="name">Coin name</label>
                                 <input name='title' value={item.title} type="text" onChange={(e) => handleInputChange(e)}  />
                             </div>
-
-                            {/* {} */}
                             <div className="edit-detail">
-                                <label htmlFor="name">Face value</label>
-                                <input name='face' type="text" />
+                                <label htmlFor="name">Category id</label>
+                                <input name='category_id' type="text" value={item.category_id} onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Year of issue</label>
