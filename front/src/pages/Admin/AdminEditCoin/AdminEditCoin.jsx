@@ -76,11 +76,11 @@ export default function AdminEditCoin() {
                         <div className="edit-details-center">
                             <div className="edit-detail-large">
                                 <label htmlFor="name">Short description</label>
-                                <input name='short_desc' type="text" value={item.short_desc}  onChange={(e) => handleInputChange(e)}/>
+                                <textarea name='short_desc' type="text" value={item.short_desc}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail-large">
                                 <label htmlFor="name">Long description</label>
-                                <input name='description' type="text" value={item.description}  onChange={(e) => handleInputChange(e)}/>
+                                <textarea name='description' type="text" value={item.description}  onChange={(e) => handleInputChange(e)}/>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Quality of the coin</label>

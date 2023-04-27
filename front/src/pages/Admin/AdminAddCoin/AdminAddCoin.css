@@ -29,17 +29,19 @@
 }
 
 .add-detail input {
-    padding: 3px;
+    padding: 5px;
     margin-top: 5px;
     height: 47.75px;
 }
 
-.add-detail-large {
+.add-detail-large textarea{
+    padding: 5px;
     display: flex;
     flex-direction: column;
     width: 374px;
-    height: 156px;
+    height: 136.75px;
     margin-bottom: 20px;
+    resize: none;
 }
 
 .add-detail-large label {

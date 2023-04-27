@@ -51,10 +51,11 @@
     color: #000000;
 }
 
-.edit-detail-large input {
+.edit-detail-large textarea {
     padding: 3px;
     margin-top: 5px;
     height: 353.75px;
+    resize: none;
 }
 
 .edit-btn-container{

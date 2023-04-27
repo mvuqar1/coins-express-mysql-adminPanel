@@ -32,8 +32,8 @@ export default function AdminAddCoin() {
     const { name, value } = event.target;
 
     setCoin(coin => ([{
-      ...coin[0],
-      [name]: value
+      [name]: value,
+      ...coin[0]
     }]));
   };
   const handleSubmit = (e) => {
@@ -84,11 +84,11 @@ export default function AdminAddCoin() {
             <div className="add-details-center">
               <div className="add-detail-large">
                 <label htmlFor="name">Short description</label>
-                <input name='short_desc' type="text" value={item.short_desc} onChange={(e) => handleInputChange(e)} />
+                <textarea name='short_desc' type="text" value={item.short_desc} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="add-detail-large">
                 <label htmlFor="name">Long description</label>
-                <input name='description' type="text" value={item.description} onChange={(e) => handleInputChange(e)} />
+                <textarea name='description' type="text" value={item.description} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="add-detail">
                 <label htmlFor="name">Quality of the coin</label>
