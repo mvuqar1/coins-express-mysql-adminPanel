@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "./AdminListCoins.css"
-import { deleteCoin } from '../../API/Api'
+import { deleteCoin } from '../../../API/Api'
 
 export default function AdminListCoins(props) {
   const navigate=useNavigate()

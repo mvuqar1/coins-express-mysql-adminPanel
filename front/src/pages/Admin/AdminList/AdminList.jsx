@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Search from '../../../Components/Search/Search'
 import { getAllCoins } from '../../../API/Api'
-import AdminListCoins from '../../AdminListCoins/AdminListCoins'
+import AdminListCoins from '../AdminListCoins/AdminListCoins'
 import AdminAddCoin from '../../../Components/AdminAddCoinButton/AdminAddCoinButton'
 
 
