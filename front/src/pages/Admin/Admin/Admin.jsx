@@ -29,7 +29,7 @@ export default function Admin() {
       setError('Incorrect login or password');
       return;
     }
-    navigate('/admin/list', { state: { isAuthenticated: true } });
+    navigate('/admin/list', { state: { isAuthenticated: true } });    //1
   };
 
   return (

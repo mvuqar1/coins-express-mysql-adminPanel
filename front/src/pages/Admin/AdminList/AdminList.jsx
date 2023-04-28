@@ -9,24 +9,22 @@ export default function AdminList() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const isAuthenticated = location.state?.isAuthenticated;
-  const state = location.state; // получаем объект состояния из свойства state
-  const url = state?.url; 
+  const isAuthenticated = location.state?.isAuthenticated;        //1
+  const isAuthenticated2 = location.state?.isAuthenticated2;
 
  
-  console.log(url)
 
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
-    console.log(url)
-    // if (!isAuthenticated ||url==="admin") {
-    //   navigate('/admin');
-    // }
+    // console.log(url)
+    if (!isAuthenticated && !isAuthenticated2 ) {
+      navigate('/admin');
+    }
     getAllCoins().then((data) => {
       setCoins(data);
     });
-  }, [isAuthenticated, navigate, url]);
+  }, [isAuthenticated, isAuthenticated2, navigate]);
 
   return (
     <>
