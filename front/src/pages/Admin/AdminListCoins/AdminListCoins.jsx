@@ -4,6 +4,12 @@ import "./AdminListCoins.css"
 import { deleteCoin } from '../../../API/Api'
 
 export default function AdminListCoins(props) {
+
+
+const nav=()=>{
+  navigate('/admin/list', { state: { isAuthenticated: true } });
+}
+
   const navigate=useNavigate()
   const { coins } = props
   const [deletedCoinId, setDeletedCoinId] = useState(null)
@@ -35,8 +41,8 @@ export default function AdminListCoins(props) {
               <div>
                 {/* go to CoinDetail */}
                 {/* <Link to={{ pathname: `/products/${item.id}`, state: { url: "admin" } }}> */}
-                <Link to={`/products/${item.id}?url=admin`}>
-                  <p className="admin-list-title">{item.title}</p>
+                <Link to={`/products/${item.id}`} state={{ url: "admin" }}>
+                  <p className="admin-list-title" onClick={nav}>{item.title}</p>
                 </Link>
 
                 <p className="admin-list-short-desc">{item.short_desc}</p>

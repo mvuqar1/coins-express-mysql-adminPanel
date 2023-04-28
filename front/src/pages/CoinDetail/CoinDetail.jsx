@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link, useSearchParams } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import { getDetail } from '../../API/Api'
 import "./CoinDetail.css"
 
@@ -21,9 +21,11 @@ export default function CoinDetail() {
   // const [searchParams] = useSearchParams();
   // const url = searchParams.get('url');
 
-  const [searchParams] = useSearchParams();
-const url = searchParams.get('url');
-  console.log(url)
+  // const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const url = location.state?.url;
+// const url = searchParams.get('url');
+  // console.log(url)
   
 
 
@@ -72,9 +74,16 @@ const url = searchParams.get('url');
                 </tr>
               </table></div>
               <div className="back-to-container">
-              <Link className='back-to' to={url === "admin" ? `/admin/list` : `/categories/${item.category_id}`}>Back to the list
-              </Link>
-
+              <Link
+                  className="back-to"
+                  to={
+                    url === 'admin'
+                      ? { pathname: '/admin/list', state: { url: 'admin' } }
+                      : `/categories/${item.category_id}`
+                  }
+                >
+                  Back to the list
+                </Link>
   
                 </div>
             </div>
