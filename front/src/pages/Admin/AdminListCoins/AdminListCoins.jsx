@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "./AdminListCoins.css"
 import { deleteCoin } from '../../../API/Api'
@@ -14,8 +14,16 @@ export default function AdminListCoins(props) {
 
   const adminEditCoin=(item)=>{
     navigate(`/admin/list/edit/${item.id}`, { state: { isAuthenticated: true } })
-    
   }
+
+//   const location=useLocation()
+//   const fromAdmin = location.state?.isAuthenticated;
+
+// useEffect(()=>{
+//   if(!fromAdmin)
+//   navigate('/admin/list', { state: { isAuthenticated: true } });
+// },[fromAdmin,navigate])
+
   const btnId = (id) => {
     deleteCoin(id)
       .then(() => setDeletedCoinId(id))

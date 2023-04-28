@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import "./AdminAddCoin.css"
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { postCoin } from '../../../API/Api';
 
 export default function AdminAddCoin() {
@@ -21,25 +21,30 @@ export default function AdminAddCoin() {
     image2: '',
   }]);
 
-
+  const location=useLocation()
+  const fromAdmin = location.state?.isAuthenticated;
+  useEffect(()=>{
+    if(!fromAdmin)
+    navigate('/admin');
+  },[fromAdmin,navigate])
 
   const cancelHandle = (e) => {
     e.preventDefault()
     navigate('/admin/list', { state: { isAuthenticated: true } });
   }
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name,value)
 
     setCoin(coin => ([{
+      ...coin[0],
       [name]: value,
-      ...coin[0]
     }]));
   };
   const handleSubmit = (e) => {
     e.preventDefault()
     if (coin[0].title !== "") {
-      console.log(coin[0])
       postCoin(coin[0])
       navigate('/admin/list', { state: { isAuthenticated: true } });
     }
@@ -58,11 +63,11 @@ export default function AdminAddCoin() {
             <div className="add-details-left">
               <div className="add-detail">
                 <label htmlFor="name">Coin name</label>
-                <input name='title' value={item.title} type="text" onChange={(e) => handleInputChange(e)} />
+                <input name='title'  type="text" value={item.title} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="add-detail">
                 <label htmlFor="name">Category id</label>
-                <input name='category_id' type="text" valuy={item.category_id} onChange={(e) => handleInputChange(e)} />
+                <input name='category_id' type="text" value={item.category_id} onChange={(e) => handleInputChange(e)} />
               </div>
               <div className="add-detail">
                 <label htmlFor="name">Year of issue</label>
