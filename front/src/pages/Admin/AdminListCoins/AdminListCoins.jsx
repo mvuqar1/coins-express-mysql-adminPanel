@@ -34,7 +34,8 @@ export default function AdminListCoins(props) {
               </div>
               <div>
                 {/* go to CoinDetail */}
-                <Link to={`/categories/${item.category_id}/${item.id}`}>
+                {/* <Link to={{ pathname: `/products/${item.id}`, state: { url: "admin" } }}> */}
+                <Link to={`/products/${item.id}?url=admin`}>
                   <p className="admin-list-title">{item.title}</p>
                 </Link>
 
