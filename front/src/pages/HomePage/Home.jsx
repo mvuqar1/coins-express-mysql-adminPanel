@@ -5,6 +5,7 @@ import Search from "../../Components/Search/Search";
 import arrow from "./img/arrow.png"
 import AdvancedPage from "../AdvancedPage/AdvancedPage";
 import CategoryPage from "../CategoryPage/CategoryPage";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const [categories, setCategories] = useState([])
@@ -24,6 +25,7 @@ const HomePage = () => {
     return (
         <div>
             <h1>Home Page</h1>
+            <Link to={"/admin"}>Admin Panel</Link>
 
             <Search />
 

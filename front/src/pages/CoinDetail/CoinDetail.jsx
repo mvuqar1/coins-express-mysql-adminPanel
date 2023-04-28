@@ -4,24 +4,18 @@ import { getDetail } from '../../API/Api'
 import "./CoinDetail.css"
 
 export default function CoinDetail() {
-  // const navigate = useNavigate();
   const [products, setProducts] = useState([])
   const { id, coinId } = useParams()
-
+  const location = useLocation();
+  const fromAdmin = location.state?.url;  
+  
 
   useEffect(() => {
     getDetail(id, coinId).then(data => {
       setProducts(data)
     })
-  }, [id, coinId])
 
-  const location = useLocation();
-  const fromAdmin = location.state?.url;  
-
-// const go= function () {
-// navigate('/admin/list', { state: { isAuthenticated2: true } } )
-// // { pathname: '/admin/list', state: { isAuthenticated2: true } }
-// }
+  }, [id, coinId, fromAdmin,])
 
 
 
@@ -70,20 +64,11 @@ export default function CoinDetail() {
                 </tr>
               </table></div>
               <div className="back-to-container">
-              {/* <Link
-                  className="back-to"
-                  to={
-                    fromAdmin
-                      ? { pathname: '/admin/list', state: { isAuthenticated2: true } }
-                      : `/categories/${item.category_id}`
-                  }
-                >
-                  Back to the list
-                </Link> */}
 
                 {fromAdmin
-                ?<Link className="back-to" to={'/admin/list'} state={ {isAuthenticated2: true} } >Back to the list</Link>
-              :<Link className="back-to" to={`/categories/${item.category_id}`} >Back to the list</Link>}
+                  ? <Link className="back-to" to={'/admin/list'} state={{ isAuthenticated: true }} >Back to the list</Link>
+                  : <Link className="back-to" to={`/categories/${item.category_id}`} >Back to the list</Link>
+                }
   
                 </div>
             </div>

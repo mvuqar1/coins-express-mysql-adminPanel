@@ -13,8 +13,7 @@ export default function AdminListCoins(props) {
 
 
   const adminEditCoin=(item)=>{
-    navigate(`/admin/list/edit/${item.id}`)
-
+    navigate(`/admin/list/edit/${item.id}`, { state: { isAuthenticated: true } })
     
   }
   const btnId = (id) => {
@@ -36,9 +35,8 @@ export default function AdminListCoins(props) {
                 <img className="admin-list-image" src={item.image} alt="category pic" />
               </div>
               <div>
-                {/* go to CoinDetail */}
-                {/* <Link to={{ pathname: `/products/${item.id}`, state: { url: "admin" } }}> */}
                 
+                {/* go to CoinDetail */}
                 <Link to={`/products/${item.id}`} state={{ url:true }}>
                   <p className="admin-list-title">{item.title}</p>
                 </Link>

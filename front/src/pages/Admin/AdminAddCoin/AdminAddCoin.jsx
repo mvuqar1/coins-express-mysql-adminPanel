@@ -25,7 +25,7 @@ export default function AdminAddCoin() {
 
   const cancelHandle = (e) => {
     e.preventDefault()
-    navigate("/admin/list")
+    navigate('/admin/list', { state: { isAuthenticated: true } });
   }
 
   const handleInputChange = (event) => {
@@ -41,7 +41,7 @@ export default function AdminAddCoin() {
     if (coin[0].title !== "") {
       console.log(coin[0])
       postCoin(coin[0])
-      navigate("/admin/list")
+      navigate('/admin/list', { state: { isAuthenticated: true } });
     }
 
 

@@ -17,7 +17,6 @@ export default function AdminList() {
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
-    // console.log(url)
     if (!isAuthenticated && !isAuthenticated2 ) {
       navigate('/admin');
     }
