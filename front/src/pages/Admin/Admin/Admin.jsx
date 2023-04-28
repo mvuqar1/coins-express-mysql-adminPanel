@@ -4,6 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Admin() {
   const navigate=useNavigate()
+  const acces={
+    login:"admin",
+    password:"admin"
+}
   const [coin, setCoin] = useState([])
   
   const handleInputChange = (event) => {
@@ -16,7 +20,11 @@ export default function Admin() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate("/admin/list")
+    if(coin.login===acces.login && coin.password===acces.password){
+
+      navigate("/admin/list")
+    }
+
   
     console.log(`Login: ${coin.login}, Password: ${coin.password}`);
   };
