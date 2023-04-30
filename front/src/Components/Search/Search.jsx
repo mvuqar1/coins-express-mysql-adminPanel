@@ -27,7 +27,7 @@ export default function Search({ state }) {
             navigate(`/search/${formValues.search}`, { state: true })
         }
     } 
-    const searchHandler = (e) => { 
+    const searchOnChangeHandler = (e) => { 
         setFormValues(prev => ({
             ...prev,
             [e.target.name]: e.target.value
@@ -42,19 +42,20 @@ export default function Search({ state }) {
         setIsRotated(prevState => !prevState);
     }
     return (
-        <form onChange={searchHandler} onSubmit={submitFormHandler} className="form">
+        <form onChange={searchOnChangeHandler} onSubmit={submitFormHandler} className="form">
             <label>
                 <p>Input field</p>
-                <input className="category-input" name="search" value={formValues.search} onChange={searchHandler} />
+                <input className="category-input" name="search" value={formValues.search} onChange={searchOnChangeHandler} />
                 <input className="search-btn" type="submit" value="Search" />
             </label>
             <div className="advance" onClick={handlerRotate}>
                 <span>Advanced filter</span>
                 <img className={isRotated ? "rotate" : ""} src={arrow} alt="arrow" />
             </div>
-            {!isRotated
+            {
+            !isRotated
             ?""
-            :<AdvancedPage formValues={formValues} onAdvancedFormChange={searchHandler}/>
+            :<AdvancedPage formValues={formValues} searchOnChangeHandler={searchOnChangeHandler} />
             }
         </form >
     )
