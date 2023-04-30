@@ -2,24 +2,19 @@ import { useEffect, useState } from "react"
 import { getCategories } from '../../API/Api'
 import './Home.css';
 import Search from "../../Components/Search/Search";
-import arrow from "./img/arrow.png"
-import AdvancedPage from "../AdvancedPage/AdvancedPage";
+
 import CategoryPage from "../CategoryPage/CategoryPage";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const [categories, setCategories] = useState([])
-    const [isRotated, setIsRotated] = useState(false);
+
 
     useEffect(() => {
         getCategories().then(data => {
             setCategories(data)
         })
     }, [])
-
-    function handlerRotate() {
-        setIsRotated(prevState => !prevState);
-    }
 
 
     return (
@@ -30,16 +25,8 @@ const HomePage = () => {
 
             <Search />
 
-            <div className="advance" onClick={handlerRotate}>
-                <span>Advanced filter</span>
-                <img className={isRotated ? "rotate" : ""} src={arrow} alt="arrow" />
-            </div>
+            <CategoryPage categories={categories} />
 
-            {!isRotated ?
-                <CategoryPage categories={categories} />
-                :
-                <AdvancedPage />
-            }
         </div>
     )
 }

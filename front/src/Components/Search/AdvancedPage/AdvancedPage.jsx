@@ -1,14 +1,15 @@
 import React from 'react'
 import "./AdvancedPage.css"
 
-export default function AdvancedPage() {
+export default function AdvancedPage({formValues,onAdvancedFormChange}) {
+
     return (
         <div className='advance-container'>
             <div className="left">
                 <div className="advance-items">
                     <div className="advance-item">
                         <p className='.advance-p'>Issuing country</p>
-                        <select className='advance-select'>
+                        <select className='advance-select' name='country' value={formValues.country}>
                             <option value="Canada">Canada</option>
                             <option value="India">India</option>
                             <option value="Iran">Iran</option>
@@ -23,7 +24,7 @@ export default function AdvancedPage() {
                     </div>
                     <div className="advance-item">
                         <p>Metal</p>
-                        <select className='advance-select'>
+                        <select className='advance-select' name='metal' value={formValues.metal}>
                             <option value="gold">Gold</option>
                             <option value="nickel">Nickel</option>
                             <option value="steel">Stell</option>
@@ -32,7 +33,7 @@ export default function AdvancedPage() {
                     </div>
                     <div className="advance-item">
                         <p>Quality of the coin</p>
-                        <select className='advance-select'>
+                        <select className='advance-select' name='quality' value={formValues.quality}>
                             <option value="Proof">Proof</option>
                             <option value="Proof1">Proof1</option>
                             <option value="Proof2">Proof2</option>
@@ -47,13 +48,15 @@ export default function AdvancedPage() {
                     <div className="advance-right-item">
                         <p className='advance-p'>Price</p>
                         <div className="from-to">
-                            <span>from</span><input type="text" /><span>to</span><input type="text" />
+                            <span>from</span><input type="number" name='fromPrice'  value={formValues.fromPrice} />
+                            <span>to</span><input type="number"  name='toPrice' value={formValues.toPrice}/>
                         </div>
                     </div>
                     <div className="advance-right-item">
                         <p className='advance-p'>Year of issue</p>
                         <div className="from-to">
-                            <span>from</span><input type="text" /><span>to</span><input type="text" />
+                            <span>from</span><input type="number" name='fromYear' value={formValues.fromYear}/>
+                            <span>to</span><input type="number" name='toYear' value={formValues.toYear} />
                         </div>
                     </div>
                 </div>
