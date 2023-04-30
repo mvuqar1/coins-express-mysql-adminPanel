@@ -9,8 +9,9 @@ export default function AdminList() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const isAuthenticated = location.state?.isAuthenticated;        //1
+  const isAuthenticated = location?.state;        //1
   const isAuthenticated2 = location.state?.isAuthenticated2;
+  console.log(isAuthenticated)
 
  
 
@@ -28,7 +29,7 @@ export default function AdminList() {
   return (
     <>
       <h1>Admin panel</h1>
-      <Search />
+      <Search state={true} />
       <AdminListCoins coins={coins}/>
       <AdminAddCoin/>
     </>

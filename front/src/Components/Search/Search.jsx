@@ -5,14 +5,15 @@ import "./Search.css"
 
 
 
-export default function Search() {
+export default function Search({state}) {
     const navigate = useNavigate();
     const [search, setSearch] = useState('')
+  
 
     const submitFormHandler = (e) => {
         e.preventDefault()
         if(search!==""){
-            navigate(`/search/${search}`)
+            navigate(`/search/${search}` ,{state:true})
         }   
     }
 

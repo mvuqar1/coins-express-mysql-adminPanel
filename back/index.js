@@ -61,20 +61,47 @@ app.get('/categories/:id', (req, res) => {
     }
   )
 })
+
+// app.get('/categories/:id/:coinId', (req, res) => {
+//   const id = +req.params.coinId;
+
+//   connection.query(
+//     `SELECT * FROM coins WHERE id = ${id}`, (err, data) => {
+//       if (!err) {
+//         // console.log("data: ", data)
+//         res.json(data)
+//       } else {
+//         res.status(500).json()
+//       }
+//     }
+//   )
+// })
+
+
 app.get('/categories/:id/:coinId', (req, res) => {
-  const id = +req.params.coinId;
+  const coinId = +req.params.coinId;
 
   connection.query(
-    `SELECT * FROM coins WHERE id = ${id}`, (err, data) => {
+    `SELECT * FROM coins WHERE id = ${coinId};`, (err, coin) => {
       if (!err) {
-        // console.log("data: ", data)
-        res.json(data)
-      } else {
-        res.status(500).json()
+        connection.query(
+          `SELECT * FROM text WHERE text_id=${coinId}`, (err, text_text) => {
+            if (!err) {
+              res.json({
+                coin: coin[0],
+                text_text
+              });
+            } else {
+              console.log('error: ', err);
+              res.status(500).json();
+            }
+          }
+        );
       }
     }
-  )
-})
+  )}
+);
+
 
 app.get('/search/:title', (req, res) => {
   const title = req.params.title.toLowerCase();

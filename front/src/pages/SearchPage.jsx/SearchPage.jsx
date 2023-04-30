@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { getSearch } from '../../API/Api'
-import { Link, useParams } from 'react-router-dom'
+import { Link,  useLocation, useNavigate, useParams } from 'react-router-dom'
 import Search from '../../Components/Search/Search'
 
 export default function SearchPage() {
+    const navigate=useNavigate()
+    const lokation=useLocation()
+    const fromAdmin=lokation.state
     const [serachList, setSerachList] = useState([])
     const params=useParams()
 
 
     useEffect(() => {
+        if(!fromAdmin){
+            navigate('/admin');
+        }
         getSearch(params.title).then(data => {
             console.log(data)
             setSerachList(data)
         })
-    }, [params.title])
+    }, [fromAdmin, navigate, params.title])
   return (
     <>
     <h1>Search Page</h1>

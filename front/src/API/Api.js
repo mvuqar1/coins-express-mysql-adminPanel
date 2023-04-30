@@ -23,6 +23,7 @@ const getCoins = async (categoryId, searchQuery) => {
  const getDetail = async (id,coinId) => {
     const res = await fetch(`${baseUrl}/categories/${id}/${coinId}`);
     const data = await res.json();
+    console.log(data)
     return data
 }
 
