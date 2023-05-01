@@ -3,8 +3,8 @@ import './App.css';
 import HomePage from './pages/HomePage/Home';
 import {
   BrowserRouter,
-  Route,
-  Routes
+  Routes,
+  Route
 } from "react-router-dom";
 import ListOfCoins from './pages/ListOfCoins/ListOfCoins';
 import CoinDetail from './pages/CoinDetail/CoinDetail';
@@ -22,7 +22,8 @@ function App() {
           <Route exact path='/' element={<HomePage/>} />
           <Route path='/categories/:id' element={<ListOfCoins/>} />
           <Route path='/products/:coinId' element={<CoinDetail />} />
-          <Route path='/search/:title' element={<SearchPage />} />
+          <Route path='/search/:object' element={<SearchPage />} />
+          {/* <Route path='/search/:title/:query' element={<SearchPage />} /> */}
           <Route path='/admin' element={<Admin />} />
           <Route path='/admin/list' element={<AdminList />} />
           <Route path='/admin/list/edit/:id' element={<AdminEditCoin />} />
