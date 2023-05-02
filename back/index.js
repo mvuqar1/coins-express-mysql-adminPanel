@@ -193,16 +193,16 @@ app.get('/search', (req, res) => {
       searchQueryArr.push(`quality LIKE '%${searchQuery.quality}%'`)
   }
   if (searchQuery.fromPrice) {
-      searchQueryArr.push(`price > '${searchQuery.fromPrice}'`)
+      searchQueryArr.push(`price >= '${searchQuery.fromPrice}'`)
   }
   if (searchQuery.toPrice) {
-      searchQueryArr.push(`price < '${searchQuery.toPrice}'`)
+      searchQueryArr.push(`price <= '${searchQuery.toPrice}'`)
   }
   if (searchQuery.fromYear) {
-      searchQueryArr.push(`year > '${searchQuery.fromYear}'`)
+      searchQueryArr.push(`year >= '${searchQuery.fromYear}'`)
   }
   if (searchQuery.toYear) {
-      searchQueryArr.push(`year < '${searchQuery.toYear}'`)
+      searchQueryArr.push(`year <= '${searchQuery.toYear}'`)
   }
   
   const finalQuery = searchQueryArr.join(' AND ')

@@ -20,6 +20,7 @@ export default function AdvancedPage({formValues,searchOnChangeHandler}) {
                             <option value="Costa Rica">Costa Rica</option>
                             <option value="Pakistan">Pakistan</option>
                             <option value="Iceland">Iceland</option>
+                            <option value="British South Africa">British South Africa</option>
                             <option value="Azerbaijan">Azerbaijan</option>
                         </select>
                     </div>
