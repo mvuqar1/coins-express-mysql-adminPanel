@@ -22,8 +22,7 @@ function App() {
           <Route exact path='/' element={<HomePage/>} />
           <Route path='/categories/:id' element={<ListOfCoins/>} />
           <Route path='/products/:coinId' element={<CoinDetail />} />
-          <Route path='/search/:object' element={<SearchPage />} />
-          {/* <Route path='/search/:title/:query' element={<SearchPage />} /> */}
+          <Route path='/search' element={<SearchPage />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/admin/list' element={<AdminList />} />
           <Route path='/admin/list/edit/:id' element={<AdminEditCoin />} />

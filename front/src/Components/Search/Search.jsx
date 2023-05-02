@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import "./Search.css"
 import AdvancedPage from './AdvancedPage/AdvancedPage';
 import arrow from "./img/arrow.png"
+import { useSearchParams } from 'react-router-dom';
 
 
 export default function Search({ state }) {
+    const [isRotated, setIsRotated] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation()
+    // eslint-disable-next-line no-unused-vars
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [submitPressed, setSubmitPressed] = useState(false)
 
     const [formValues, setFormValues] = useState({
         search: '',
@@ -18,18 +24,19 @@ export default function Search({ state }) {
         fromYear: '',
         toYear: ''
     })
-    const submitFormHandler = (e) => {
-        e.preventDefault()
-        if (formValues) {
-            const filteredFormValues = Object.entries(formValues)
-              .reduce((obj, [key, value]) => {
-                obj[key] = value;                                                         //????????????????
-                // console.log(obj)
-                return obj;
-              }, {});
-            const queryParams = new URLSearchParams (filteredFormValues);                   //?????????????
-            navigate(`/search/${queryParams.toString()}`, { state: true });
+
+
+    useEffect(() => {
+        if (submitPressed) {
+            // console.log(location)
+            navigate('/search' + location.search);
+            setSubmitPressed(false);
         }
+    }, [submitPressed, location.search, navigate]);
+
+
+    function handlerRotate() {
+        setIsRotated(prevState => !prevState);
     }
 
     const searchOnChangeHandler = (e) => {
@@ -39,10 +46,22 @@ export default function Search({ state }) {
         }))
     }
 
-    const [isRotated, setIsRotated] = useState(false);
-    function handlerRotate() {
-        setIsRotated(prevState => !prevState);
+    const submitFormHandler = (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target);
+        const formDataToArray = [...formData.entries()]
+
+        const finalData = {}
+        formDataToArray.forEach(item => { // [ country: Canada ]
+            if (item[1]) {
+                finalData[item[0]] = item[1]
+            }
+        })
+        // console.log(finalData)
+        setSearchParams(finalData)
+        setSubmitPressed(true)
     }
+
 
     return (
         <form onChange={searchOnChangeHandler} onSubmit={submitFormHandler} className="form">
@@ -64,43 +83,6 @@ export default function Search({ state }) {
     )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// const [formValues, setFormValues] = useState({
-//     search: '',
-//     country: '',
-//     metal: '',
-//     quality: 'proof',
-//     fromPrice: '',
-//     toPrice: '',
-//     fromYear: '',
-//     toYear: ''
-// })
-// const submitFormHandler = (e) => {
-//     e.preventDefault()
-//     console.log("first")
-//     // if (formValues.search !== "") {
-//     //     navigate(`/search/${formValues.search}`, { state: true })
-//     // }
-//     if (formValues) {
-//         const filteredFormValues = Object.entries(formValues)
-//         //   .filter(([key, value]) => key !== "search")
-//           .reduce((obj, [key, value]) => {
-//             obj[key] = value;
-//             // console.log(obj)
-//             return obj;
-//           }, {});
-//         const queryParams = new URLSearchParams(filteredFormValues);
-//         navigate(`/search/${formValues.search}?${queryParams.toString()}`, { state: true });
-//     }
-// }
+        // if (searchParams.toString().length) {
+        //     navigate(`/search/${searchParams}`)
+        // }

@@ -10,7 +10,7 @@ export default function AdvancedPage({formValues,searchOnChangeHandler}) {
                     <div className="advance-item">
                         <p className='.advance-p'>Issuing country</p>
                         <select className='advance-select' name='country' value={formValues.country} onChange={searchOnChangeHandler}>
-                            <option value="Canada">Canada</option>
+                            <option value="CANADA">Canada</option>
                             <option value="India">India</option>
                             <option value="Iran">Iran</option>
                             <option value="Yemen">Yemen</option>
@@ -20,6 +20,7 @@ export default function AdvancedPage({formValues,searchOnChangeHandler}) {
                             <option value="Costa Rica">Costa Rica</option>
                             <option value="Pakistan">Pakistan</option>
                             <option value="Iceland">Iceland</option>
+                            <option value="Azerbaijan">Azerbaijan</option>
                         </select>
                     </div>
                     <div className="advance-item">
@@ -35,7 +36,7 @@ export default function AdvancedPage({formValues,searchOnChangeHandler}) {
                         <p>Quality of the coin</p>
                         <select className='advance-select' name='quality' value={formValues.quality} onChange={searchOnChangeHandler}>
                             <option value="Proof">Proof</option>
-                            <option value="Proof1">Proof1</option>
+                            <option value="BU">BU</option>
                             <option value="Proof2">Proof2</option>
                             <option value="Proof3">Proof3</option>
                         </select>

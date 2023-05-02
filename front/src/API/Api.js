@@ -27,21 +27,25 @@ const getCoins = async (categoryId, searchQuery) => {
     return data
 }
 
-// const getSearch = async (object) => {
-//   console.log(object)
-  
-//     const res = await fetch(`${baseUrl}/search/${object}`);
-//     const data = await res.json();
-//     console.log(data)
-//     return data
+const getSearch = async (categoryId,searchQuery) => {
+  if (categoryId) {
+    const res = await fetch(`${baseUrl}/search/${categoryId}`);
+    const data = await res.json();
+    return data
+}
+else {
+  console.log("else")
+    const res = await fetch(`${baseUrl}/search?${searchQuery}`);
+    const data = await res.json();
+    return data;
+}
+}
 
-// }
-
-const getSearch = async (searchParams) => {
-  const res = await fetch(`${baseUrl}/search/${JSON.stringify(searchParams)}`);
-  const data = await res.json();
-  return data;
-};
+// const getSearch = async (searchParams) => {
+//   const res = await fetch(`${baseUrl}/search/${JSON.stringify(searchParams)}`);
+//   const data = await res.json();
+//   return data;
+// };
 
 
 const getCoin = async (id) => {

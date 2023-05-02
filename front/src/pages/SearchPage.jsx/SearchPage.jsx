@@ -1,39 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { getSearch } from '../../API/Api'
-import { Link,  useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import Search from '../../Components/Search/Search'
 
 export default function SearchPage() {
-    const navigate=useNavigate()
-    const location=useLocation()
-    const fromAdmin=location.state
     const [serachList, setSerachList] = useState([])
-    const params=useParams()
+    // eslint-disable-next-line no-unused-vars
+    const [urlSearch, setUrlSearch] = useSearchParams()
 
-    console.log(params.object)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const searchParams = {};
-    const queryString = params.object;
-    queryString.split("&").forEach((query) => {
-        const [key, value] = query.split("=");                          //????????????
-        searchParams[key] = value;
-    });
-    // console.log(searchParams);
-
-
-
-
-
+    // const searchData = [...urlSearch.entries()]
+    // console.log('urlSearch: ', [...urlSearch.entries()])
+    console.log([...urlSearch.entries()])
+    
     useEffect(() => {
-        if(!fromAdmin){
-            navigate('/admin');
-        }
-        getSearch(searchParams).then(data => {
-            // console.log(data)
-            setSerachList(data)
-        })
-    }, [fromAdmin, navigate, params.object,])
+        getSearch("",urlSearch.toString())
+        .then(data => setSerachList(data))
+    }, [urlSearch])
   return (
     <>
     <h1>Search Page</h1>
