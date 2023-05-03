@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { getCoins } from '../../API/Api'
+import { getSearch } from '../../API/Api'
 import "./ListOfCoins.css"
 import Search from "../../Components/Search/Search"
 
@@ -12,7 +12,7 @@ const ListOfCoins = () => {
     const [coins, setCoins] = useState([])
 
     useEffect(() => {
-        getCoins(id).then(data => {
+        getSearch(id,"").then(data => {
             setCoins(data)
         })
     }, [id])

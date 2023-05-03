@@ -28,7 +28,7 @@ export default function Search({ state }) {
 
     useEffect(() => {
         if (submitPressed) {
-            // console.log(location)
+            //go to SearchPage
             navigate('/search' + location.search);
             setSubmitPressed(false);
         }

@@ -12,14 +12,27 @@ const baseUrl = 'http://localhost:3001'
     return data
 }
 
-const getCoins = async (categoryId, searchQuery) => {
-    if (categoryId) {
-        const res = await fetch(`${baseUrl}/categories/${categoryId}`);
-        const data = await res.json();
-        return data
-    }
-}
+// const getCoins = async (categoryId, searchQuery) => {
+//     if (categoryId) {
+//         const res = await fetch(`${baseUrl}/categories/${categoryId}`);
+//         const data = await res.json();
+//         return data
+//     }
+// }
 
+const getSearch = async (categoryId, searchQuery) => {
+  //get category
+  if (categoryId) {
+    const res = await fetch(`${baseUrl}/categories/${categoryId}`);
+    const data = await res.json();
+    return data
+  }
+  else {
+    const res = await fetch(`${baseUrl}/search?${searchQuery}`);
+    const data = await res.json();
+    return data;
+  }
+}
  const getDetail = async (id,coinId) => {
     const res = await fetch(`${baseUrl}/categories/${id}/${coinId}`);
     const data = await res.json();
@@ -27,19 +40,6 @@ const getCoins = async (categoryId, searchQuery) => {
     return data
 }
 
-const getSearch = async (categoryId,searchQuery) => {
-  if (categoryId) {
-    const res = await fetch(`${baseUrl}/search/${categoryId}`);
-    const data = await res.json();
-    return data
-}
-else {
-  console.log("else")
-    const res = await fetch(`${baseUrl}/search?${searchQuery}`);
-    const data = await res.json();
-    return data;
-}
-}
 
 // const getSearch = async (searchParams) => {
 //   const res = await fetch(`${baseUrl}/search/${JSON.stringify(searchParams)}`);
@@ -103,4 +103,4 @@ const deleteCoin = async (id) => {
     }
   }
 
-export {getAllCoins,getCategories,getCoins,getCoin,getDetail,getSearch,deleteCoin,putCoin,postCoin}
+export {getAllCoins,getCategories,getCoin,getDetail,getSearch,deleteCoin,putCoin,postCoin}

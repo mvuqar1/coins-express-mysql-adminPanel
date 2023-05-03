@@ -180,42 +180,58 @@ app.get('/search', (req, res) => {
   // ?country=Canadian&metal=Nickel&sdfsd=fsdfsd
   const searchQuery = req.query; // { country: cana }
   const searchQueryArr = []
-  if (searchQuery.country) {
-      searchQueryArr.push(`issuing_country LIKE '%${searchQuery.country}%'`)
-  }
-  if (searchQuery.search) {
-      searchQueryArr.push(`title LIKE '%${searchQuery.search}%' OR short_desc LIKE '%${searchQuery.search}%'`)
-  }
-  if (searchQuery.metal) {
-      searchQueryArr.push(`composition LIKE '%${searchQuery.metal}%'`)
-  }
-  if (searchQuery.quality) {
-      searchQueryArr.push(`quality LIKE '%${searchQuery.quality}%'`)
-  }
-  if (searchQuery.fromPrice) {
-      searchQueryArr.push(`price >= '${searchQuery.fromPrice}'`)
-  }
-  if (searchQuery.toPrice) {
-      searchQueryArr.push(`price <= '${searchQuery.toPrice}'`)
-  }
-  if (searchQuery.fromYear) {
-      searchQueryArr.push(`year >= '${searchQuery.fromYear}'`)
-  }
-  if (searchQuery.toYear) {
-      searchQueryArr.push(`year <= '${searchQuery.toYear}'`)
-  }
-  
-  const finalQuery = searchQueryArr.join(' AND ')
 
-  connection.query(`SELECT * FROM coins WHERE ${finalQuery};`, (err, data) => {
+  if (searchQuery.length === 0) {
+    console.log("first")
+    connection.query('SELECT * FROM coins;', (err, data) => {
       if (!err) {
-          res.json(data)
+        res.json(data)
       } else {
-          res.status(500).send()
-          console.log(err)
+        res.status(500).send()
+        console.log(err)
       }
+    })
+  } else {
+    if (searchQuery.country) {
+      searchQueryArr.push(`issuing_country LIKE '%${searchQuery.country}%'`)
+    }
+    if (searchQuery.search) {
+      searchQueryArr.push(`title LIKE '%${searchQuery.search}%' OR short_desc LIKE '%${searchQuery.search}%'`)
+    }
+    if (searchQuery.metal) {
+      searchQueryArr.push(`composition LIKE '%${searchQuery.metal}%'`)
+    }
+    if (searchQuery.quality) {
+      searchQueryArr.push(`quality LIKE '%${searchQuery.quality}%'`)
+    }
+    if (searchQuery.fromPrice) {
+      searchQueryArr.push(`price >= '${searchQuery.fromPrice}'`)
+    }
+    if (searchQuery.toPrice) {
+      searchQueryArr.push(`price <= '${searchQuery.toPrice}'`)
+    }
+    if (searchQuery.fromYear) {
+      searchQueryArr.push(`year >= '${searchQuery.fromYear}'`)
+    }
+    if (searchQuery.toYear) {
+      searchQueryArr.push(`year <= '${searchQuery.toYear}'`)
+    }
 
-  })
+    console.log(searchQueryArr)
+    const finalQuery = searchQueryArr.join(' AND ')
+
+    connection.query(`SELECT * FROM coins WHERE ${finalQuery};`, (err, data) => {
+      if (!err) {
+        res.json(data)
+      } else {
+        res.status(500).send()
+        console.log(err)
+      }
+    })
+
+  }
+
+
 })
 
 // app.get('/search/:object', (req, res) => {
