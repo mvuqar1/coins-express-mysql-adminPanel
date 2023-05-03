@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link, useLocation } from 'react-router-dom'
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom'
 import { getDetail } from '../../API/Api'
 import "./CoinDetail.css"
 
@@ -7,7 +7,8 @@ export default function CoinDetail() {
   const [product, setProduct] = useState({})
   const { id, coinId } = useParams()
   const location = useLocation();
-  const fromAdmin = location.state?.url;  
+  const fromAdmin = location.state?.url; 
+  const navigate=useNavigate() 
   
 
   useEffect(() => {
@@ -72,10 +73,11 @@ export default function CoinDetail() {
               </table>
             </div>
             <div className="back-to-container">
-              {fromAdmin
+            <Link className="back-to" onClick={()=>navigate(-1)}>Back to the list</Link>
+              {/* {fromAdmin
                 ? <Link className="back-to" to={'/admin/list'} state={{ isAuthenticated: true }}>Back to the list</Link>
                 : <Link className="back-to" to={`/categories/${product.coin?.category_id}`}>Back to the list</Link>
-              }
+              } */}
             </div>
           </div>
         </div>

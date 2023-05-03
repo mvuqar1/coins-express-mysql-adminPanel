@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import './Admin.css';
 import { useNavigate } from 'react-router-dom';
+// import { UseAuth } from '../../../Hoc/UseAuth';
 
 export default function Admin() {
   const navigate = useNavigate();
+  // const location=useLocation()
+  // const{signin}=UseAuth()
+
+  // const fromPage=location.state?.from?.pathname ||"/admin"
   const access = {
     login: 'admin',
     password: 'admin',
@@ -29,7 +34,11 @@ export default function Admin() {
       setError('Incorrect login or password');
       return;
     }
-    navigate('/admin/list', { state:  true } );    //1
+    console.log("kecid")
+      // const form=event.target
+      // const user=form.login.value
+      // signin(user, ()=>navigate(fromPage,{replace:true}))
+    navigate('/admin/list' );    //1
   };
 
   return (
