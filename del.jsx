@@ -2,7 +2,7 @@
 
 
 // use final_project;
-// CREATE TABLE `final_project`.`coins` (
+// CREATE TABLE `final_project`.`categories` (
 //   id INT PRIMARY KEY AUTO_INCREMENT,
 //   title VARCHAR(255) ,
 //   short_desc VARCHAR(255),
