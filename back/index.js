@@ -442,7 +442,6 @@ app.put('/all/:id', (req, res) => {
 });
 app.post('/all', (req, res) => {
   const coin = req.body; // данные монеты, переданные в теле запроса
-
   connection.query(
     'INSERT INTO coins SET ?', 
     coin, // передача объекта с данными монеты в запросе
@@ -456,6 +455,38 @@ app.post('/all', (req, res) => {
     }
   );
 });
+
+
+app.post('/acces', (req, res) => {
+  console.log(req.body)
+  const { email, password } = req.body
+  // console.log(email)
+  // console.log(password)
+
+  connection.query(`SELECT * from users where email = '${email}'`, (err, data) => {
+    if (err) {
+      console.log(err)
+    } else {
+      if (data.length > 0 && data[0].password) {
+        const adminUser = data[0]
+        if (adminUser.password === password) {
+          res.json({
+            isAdmin: true
+          })
+        } else {
+          res.json({
+            authError: 'Invalid password'
+          })
+        }
+      } else {
+        res.json({
+          authError: 'User not found'
+        })
+      }
+    }
+  })
+})
+
 
 
 

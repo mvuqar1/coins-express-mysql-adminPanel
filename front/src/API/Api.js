@@ -103,4 +103,18 @@ const deleteCoin = async (id) => {
     }
   }
 
-export {getAllCoins,getCategories,getCoin,getDetail,getSearch,deleteCoin,putCoin,postCoin}
+
+  const postAcces = async (acces) => {
+    console.log(acces)
+    const res = await fetch(`${baseUrl}/acces`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' // исправлено здесь
+      },
+      body: JSON.stringify(acces)
+    });
+    const data = await res.json();
+    return data;
+  };
+  
+export {getAllCoins,getCategories,getCoin,getDetail,getSearch,deleteCoin,putCoin,postCoin,postAcces}

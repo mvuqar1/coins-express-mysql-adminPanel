@@ -244,3 +244,18 @@
 // INSERT INTO `final_project`.`text` (`text_id`, `context`) VALUES ('30', 'Portuguese silver coin in 5 five escudos. It has been produced since 1933.');
 
 
+
+
+
+
+// CREATE TABLE `final_project`.`users` (
+//     `iduser` INT NOT NULL AUTO_INCREMENT,
+//     `role` VARCHAR(255) NULL,
+//     `email` VARCHAR(255) NULL,
+//     `password` VARCHAR(255) NULL,
+//     PRIMARY KEY (`iduser`));
+
+
+// INSERT INTO `final_project`.`users` (`role`, `email`, `password`) VALUES ('admin', 'admin@mail.ru', 'admin');
+
+  
