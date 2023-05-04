@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import "./Search.css"
-import AdvancedPage from './AdvancedPage/AdvancedPage';
+import AdvancedPage from './AdvancedPage//AdvancedPage';
 import arrow from "./img/arrow.png"
 import { useSearchParams } from 'react-router-dom';
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Search from '../../../Components/Search/Search'
-import { getAllCoins } from '../../../API/Api'
+import Search from '../../Components/Search/Search'
+import { getAllCoins } from '../../API/Api'
 import AdminListCoins from '../AdminListCoins/AdminListCoins'
-import AdminAddCoin from '../../../Components/AdminAddCoinButton/AdminAddCoinButton'
+import AdminAddCoin from '../../Components/AdminAddCoinButton/AdminAddCoinButton'
 
 export default function AdminList() {
 

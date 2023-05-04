@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import "./AdminAddCoin.css"
 import { useLocation, useNavigate } from 'react-router-dom';
-import { postCoin } from '../../../API/Api';
+import { postCoin } from '../../API/Api';
 
 export default function AdminAddCoin() {
   const navigate = useNavigate()

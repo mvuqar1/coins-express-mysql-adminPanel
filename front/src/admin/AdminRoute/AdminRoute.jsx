@@ -1,6 +1,6 @@
 import { useContext} from "react"
 import { Routes, Route, Navigate } from "react-router-dom"
-import { UserContext } from "../../../Context/userContext"
+import { UserContext } from "../../Context/userContext"
 import AdminList from "../AdminList/AdminList";
 import AdminEditCoin from "../AdminEditCoin/AdminEditCoin";
 import AdminAddCoin from "../AdminAddCoin/AdminAddCoin";

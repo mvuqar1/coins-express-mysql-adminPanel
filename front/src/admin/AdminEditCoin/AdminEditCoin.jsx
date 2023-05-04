@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from "react-router-dom"
 import "./AdminEditCoin.css"
-import { getCoin, putCoin } from '../../../API/Api'
+import { getCoin, putCoin } from '../../API/Api'
 import { useNavigate } from 'react-router-dom';
 
 export default function AdminEditCoin() {

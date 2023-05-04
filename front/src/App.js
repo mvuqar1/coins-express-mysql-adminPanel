@@ -1,4 +1,3 @@
-
 import './App.css';
 import HomePage from './pages/HomePage/Home';
 import {
@@ -10,15 +9,12 @@ import ListOfCoins from './pages/ListOfCoins/ListOfCoins';
 import CoinDetail from './pages/CoinDetail/CoinDetail';
 import SearchPage from './pages/SearchPage.jsx/SearchPage';
 import Admin from './pages/Admin/Admin/Admin';
-// import {RequireAuth} from "./Hoc/RequireAuth"
-import { AuthProvider } from './Hoc/AuthProvider';
 import UserContextProvider from './Context/userContext';
-import AdminRoute from './pages/Admin/AdminRoute/AdminRoute';
+import AdminRoute from './admin/AdminRoute/AdminRoute';
 
 function App() {
   return (
     <div className='app'>
-      <AuthProvider>
 
       <BrowserRouter>
         <Routes>
@@ -30,7 +26,7 @@ function App() {
           <Route path='/admin/*' element={<UserContextProvider><AdminRoute/></UserContextProvider>} />
         </Routes>
       </BrowserRouter>
-      </AuthProvider>
+  
     </div>
   );
 }
