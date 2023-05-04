@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
-import './Admin.css';
+import './AdminLogin.css';
 import { useNavigate } from 'react-router-dom';
-import { postAcces } from '../../../API/Api';
-import { UserContext } from '../../../Context/userContext';
-// import { UseAuth } from '../../../Hoc/UseAuth';
+import { postAcces } from '../../API/Api';
+import { UserContext } from '../../Context/userContext';
 
 export default function Admin() {
   const navigate = useNavigate();

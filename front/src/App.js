@@ -8,7 +8,7 @@ import {
 import ListOfCoins from './pages/ListOfCoins/ListOfCoins';
 import CoinDetail from './pages/CoinDetail/CoinDetail';
 import SearchPage from './pages/SearchPage.jsx/SearchPage';
-import Admin from './pages/Admin/Admin/Admin';
+import Admin from './admin/AdminLogin/AdminLogin';
 import UserContextProvider from './Context/userContext';
 import AdminRoute from './admin/AdminRoute/AdminRoute';
 
