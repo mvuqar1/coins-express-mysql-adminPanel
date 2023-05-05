@@ -99,7 +99,8 @@ app.get('/categories/:id/:coinId', (req, res) => {
         );
       }
     }
-  )}
+  )
+}
 );
 
 
@@ -123,66 +124,12 @@ app.get('/categories/:id/:coinId', (req, res) => {
 
 
 
-// app.get('/search/:object',(req, res) => {
-//   const { search, country, metal, quality, fromPrice, toPrice, fromYear, toYear } = JSON.parse(req.params.object);
-
-//   const conditions = [];
-
-//   if (search) {
-//     conditions.push(`title LIKE '%${search}%'`);
-//   }
-
-//   if (country) {
-//     conditions.push(`country='${country}'`);
-//   }
-
-//   if (metal) {
-//     conditions.push(`metal='${metal}'`);
-//   }
-
-//   if (quality) {
-//     conditions.push(`quality='${quality}'`);
-//   }
-
-//   if (fromPrice) {
-//     conditions.push(`price >= '${fromPrice}'`);
-//   }
-
-//   if (toPrice) {
-//     conditions.push(`price <= '${toPrice}'`);
-//   }
-
-//   if (fromYear) {
-//     conditions.push(`year >= '${fromYear}'`);
-//   }
-
-//   if (toYear) {
-//     conditions.push(`year <= '${toYear}'`);
-//   }
-
-//   let sql = `SELECT * FROM coins`;
-
-//   if (conditions.length > 0) {
-//     sql += ` WHERE ${conditions.join(' AND ')}`;
-//   }
-
-//   try {
-//     const results =connection.query(sql);
-//     res.json(results);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json();
-//   }
-// });
-
-
 app.get('/search', (req, res) => {
   // ?country=Canadian&metal=Nickel&sdfsd=fsdfsd
   const searchQuery = req.query; // { country: cana }
   const searchQueryArr = []
 
   if (searchQuery.length === 0) {
-    console.log("first")
     connection.query('SELECT * FROM coins;', (err, data) => {
       if (!err) {
         res.json(data)
@@ -192,9 +139,6 @@ app.get('/search', (req, res) => {
       }
     })
   } else {
-    if (searchQuery.country) {
-      searchQueryArr.push(`issuing_country LIKE '%${searchQuery.country}%'`)
-    }
     if (searchQuery.search) {
       searchQueryArr.push(`title LIKE '%${searchQuery.search}%' OR short_desc LIKE '%${searchQuery.search}%'`)
     }
@@ -210,16 +154,19 @@ app.get('/search', (req, res) => {
     if (searchQuery.toPrice) {
       searchQueryArr.push(`price <= '${searchQuery.toPrice}'`)
     }
-    if (searchQuery.fromYear) {
-      searchQueryArr.push(`year >= '${searchQuery.fromYear}'`)
-    }
     if (searchQuery.toYear) {
       searchQueryArr.push(`year <= '${searchQuery.toYear}'`)
     }
+    if (searchQuery.fromYear) {
+      searchQueryArr.push(`year >= '${searchQuery.fromYear}'`)
+    }
+    if (searchQuery.country) {
+      searchQueryArr.push(`issuing_country LIKE '%${searchQuery.country}%'`)
+    }
 
-    console.log(searchQueryArr)
+
     const finalQuery = searchQueryArr.join(' AND ')
-
+    
     connection.query(`SELECT * FROM coins WHERE ${finalQuery};`, (err, data) => {
       if (!err) {
         res.json(data)
@@ -228,168 +175,28 @@ app.get('/search', (req, res) => {
         console.log(err)
       }
     })
-
+    
   }
 
 
 })
 
-// app.get('/search/:object', (req, res) => {
-//   const { search, country, metal, quality, fromPrice, toPrice, fromYear, toYear } = JSON.parse(req.params.object);
-//   console.log(search, country, metal, quality, fromPrice, toPrice, fromYear, toYear)
 
-//   let sqlQuery = 'SELECT * FROM coins WHERE 1=1';
+app.get('/all/', (req, res) => {
 
-//   if (search) {
-//     sqlQuery += ` AND title LIKE '%${search}%'`;
-//   }
-
-//   if (country) {
-//     sqlQuery += ` AND country='${country}'`;
-//   }
-
-//   if (metal) {
-//     sqlQuery += ` AND metal='${metal}'`;
-//   }
-
-//   if (quality) {
-//     sqlQuery += ` AND quality='${quality}'`;
-//   }
-
-//   if (fromPrice) {
-//     sqlQuery += ` AND price >= '${fromPrice}'`;
-//   }
-
-//   if (toPrice) {
-//     sqlQuery += ` AND price <= '${toPrice}'`;
-//   }
-
-//   if (fromYear) {
-//     sqlQuery += ` AND year >= '${fromYear}'`;
-//   }
-
-//   if (toYear) {
-//     sqlQuery += ` AND year <= '${toYear}'`;
-//   }
-
-//   connection.query(sqlQuery, (err, data) => {
-//     console.log("first")
-//     if (!err) {
-//       console.log("good")
-//       res.json(data);
-//     } else {
-//       res.status(500).json();
-//     }
-//   });
-// });
-// app.get('/search/:object', (req, res) => {
-//   const { search, country, metal, quality, fromPrice, toPrice, fromYear, toYear } = JSON.parse(req.params.object);
-//   console.log(search, country, metal, quality, fromPrice, toPrice, fromYear, toYear)
-
-//   let sqlQuery = 'SELECT * FROM coins WHERE 1=1';
-
-//   if (search) {
-//     sqlQuery += ` AND title LIKE '%${search}%'`;
-//   }
-
-//   if (country) {
-//     sqlQuery += ` AND country='${country}'`;
-//   }
-
-//   if (metal) {
-//     sqlQuery += ` AND metal='${metal}'`;
-//   }
-
-//   if (quality) {
-//     sqlQuery += ` AND quality='${quality}'`;
-//   }
-
-//   if (fromPrice) {
-//     sqlQuery += ` AND price >= '${fromPrice}'`;
-//   }
-
-//   if (toPrice) {
-//     sqlQuery += ` AND price <= '${toPrice}'`;
-//   }
-
-//   if (fromYear) {
-//     sqlQuery += ` AND year >= '${fromYear}'`;
-//   }
-
-//   if (toYear) {
-//     sqlQuery += ` AND year <= '${toYear}'`;
-//   }
-
-//   connection.query(sqlQuery, (err, data) => {
-//     console.log("first")
-//     if (!err) {
-//       console.log("good")
-//       res.json(data);
-//     } else {
-//       res.status(500).json();
-//     }
-//   });
-// });
-
-
-//   app.get('/search/:title', (req, res) => {
-//     const searchQuery = req.query;
-//     const searchQueryArr = []
-//     if (searchQuery.country) {
-//         searchQueryArr.push(`issuing_country LIKE '%${searchQuery.country}%'`)
-//     }
-//     if (searchQuery.search) {
-//         searchQueryArr.push(`title LIKE '%${searchQuery.search}%' OR short_desc LIKE '%${searchQuery.search}%'`)
-//     }
-//     if (searchQuery.metal) {
-//         searchQueryArr.push(`composition LIKE '%${searchQuery.metal}%'`)
-//     }
-//     if (searchQuery.quality) {
-//         searchQueryArr.push(`quality LIKE '%${searchQuery.quality}%'`)
-//     }
-//     if (searchQuery.fromPrice) {
-//         searchQueryArr.push(`price > '${searchQuery.fromPrice}'`)
-//     }
-//     if (searchQuery.toPrice) {
-//         searchQueryArr.push(`price < '${searchQuery.toPrice}'`)
-//     }
-//     if (searchQuery.fromYear) {
-//         searchQueryArr.push(`year > '${searchQuery.fromYear}'`)
-//     }
-//     if (searchQuery.toYear) {
-//         searchQueryArr.push(`year < '${searchQuery.toYear}'`)
-//     }
-//     const finalQuery = searchQueryArr.join(' AND ')
-//     connection.query(`SELECT * FROM coins
-//         JOIN coin_details ON coin_details.coin_id = coins.id
-//         WHERE ${finalQuery};
-//     `, (err, data) => {
-//         if (!err) {
-//             res.json(data)
-//         } else {
-//             res.json(500)
-//             console.log(err)
-//         }
-
-//     })
-// })
-  
-  
-  app.get('/all/', (req, res) => {
-  
-    connection.query(
-      `SELECT * FROM coins`, (err, data) => {
-        if (!err) {
-          // console.log("data: ", data);
-          res.json(data);
-        } else {
-          res.status(500).json();
-        }
+  connection.query(
+    `SELECT * FROM coins`, (err, data) => {
+      if (!err) {
+        // console.log("data: ", data);
+        res.json(data);
+      } else {
+        res.status(500).json();
       }
-    );
-  });
+    }
+  );
+});
 
-  
+
 app.get('/all/:id', (req, res) => {
   const id = req.params.id;
 
@@ -424,7 +231,7 @@ app.put('/all/:id', (req, res) => {
   const coin = req.body; // данные монеты, переданные в теле запроса
 
   connection.query(
-    `UPDATE coins SET ? WHERE id = ?`, 
+    `UPDATE coins SET ? WHERE id = ?`,
     [coin, id], // передача списка значений в запросе
     (err, result) => {
       if (!err) {
@@ -443,7 +250,7 @@ app.put('/all/:id', (req, res) => {
 app.post('/all', (req, res) => {
   const coin = req.body; // данные монеты, переданные в теле запроса
   connection.query(
-    'INSERT INTO coins SET ?', 
+    'INSERT INTO coins SET ?',
     coin, // передача объекта с данными монеты в запросе
     (err, result) => {
       if (!err) {
@@ -458,14 +265,11 @@ app.post('/all', (req, res) => {
 
 
 app.post('/acces', (req, res) => {
-  console.log(req.body)
   const { email, password } = req.body
-  // console.log(email)
-  // console.log(password)
 
   connection.query(`SELECT * from users where email = '${email}'`, (err, data) => {
     if (err) {
-      console.log(err)
+      res.status(400).json({ err })
     } else {
       if (data.length > 0 && data[0].password) {
         const adminUser = data[0]
@@ -487,6 +291,38 @@ app.post('/acces', (req, res) => {
   })
 })
 
+app.get("/options", (req, res) => {
+  const queryCountry = "SELECT DISTINCT issuing_country FROM coins";
+  const queryComposition = "SELECT DISTINCT composition FROM coins";
+  const queryQuality = "SELECT DISTINCT quality FROM coins";
+
+  connection.query(queryCountry, (err, countryResults) => {
+    if (err) {
+      res.status(500).json();
+    } else {
+      const uniqueCountries = countryResults.map((row) => row.issuing_country);
+      connection.query(queryComposition, (err, compositionResults) => {
+        if (err) {
+          res.status(500).json();
+        } else {
+          const uniqueCompositions = compositionResults.map((row) => row.composition);
+          connection.query(queryQuality, (err, qualityResults) => {
+            if (err) {
+              res.status(500).json();
+            } else {
+              const uniqueQualities = qualityResults.map((row) => row.quality);
+              res.json({ countries: uniqueCountries, compositions: uniqueCompositions, qualities: uniqueQualities });
+            }
+          });
+        }
+      });
+    }
+  });
+});
+
+
+
+
 
 
 
@@ -494,7 +330,3 @@ app.post('/acces', (req, res) => {
 app.listen(PORT, () => {
   console.log('listening to port: ', PORT)
 })
-
-
-
-

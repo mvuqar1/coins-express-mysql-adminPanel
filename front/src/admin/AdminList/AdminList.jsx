@@ -3,6 +3,7 @@ import Search from '../../Components/Search/Search'
 import { getAllCoins } from '../../API/Api'
 import AdminListCoins from '../AdminListCoins/AdminListCoins'
 import AdminAddCoin from '../../Components/AdminAddCoinButton/AdminAddCoinButton'
+import { Link } from 'react-router-dom'
 
 export default function AdminList() {
 
@@ -19,6 +20,7 @@ export default function AdminList() {
   return (
     <>
       <h1>Admin panel</h1>
+      <Link to={"/"}>Home Page</Link>
       <Search state={true} />
       <AdminListCoins coins={coins}/>
       <AdminAddCoin/>

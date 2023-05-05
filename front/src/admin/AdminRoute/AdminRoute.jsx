@@ -9,9 +9,9 @@ const AdminRoute = () => {
 
     const { loggedIn } = useContext(UserContext);
 
-    return loggedIn ? (
+    return loggedIn ? (                                       //admin/list________????????????????????
         <Routes>
-          <Route path='/list' element={<AdminList />} />
+          <Route path='/list' element={<AdminList />} />             
           <Route path='/list/edit/:id' element={<AdminEditCoin />} />
           <Route path='/add' element={<AdminAddCoin />} />
         </Routes>

@@ -8,8 +8,6 @@ export default function SearchPage() {
     // eslint-disable-next-line no-unused-vars
     const [urlSearch, setUrlSearch] = useSearchParams()
 
-    console.log([...urlSearch.entries()])
-
     useEffect(() => {
         getSearch("", urlSearch.toString())
             .then(data => setSearchList(data))

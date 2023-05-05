@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import "./AdminEditCoin.css"
 import { getCoin, putCoin } from '../../API/Api'
 import { useNavigate } from 'react-router-dom';
@@ -7,23 +7,18 @@ import { useNavigate } from 'react-router-dom';
 export default function AdminEditCoin() {
     const navigate = useNavigate()
     const [coin, setCoin] = useState("")
-    const location = useLocation();
-    const fromAdmin = location.state?.isAuthenticated;
 
     const param = useParams()
 
     useEffect(() => {
-        if (!fromAdmin) {
-            navigate('/admin');
-        }
         getCoin(param.id).then((data) => {
             setCoin(data);
         });
-    }, [param.id, setCoin, fromAdmin, navigate]);
+    }, [param.id, setCoin]);
 
     const cancelHandle = (e) => {
         e.preventDefault()
-        navigate('/admin/list', { state: { isAuthenticated: true } });
+        navigate('/admin/list');
     }
 
     const handleInputChange = (event) => {
@@ -39,7 +34,7 @@ export default function AdminEditCoin() {
         const object = coin[0]
 
         putCoin(id, object)
-        navigate('/admin/list', { state: { isAuthenticated: true } });
+        navigate('/admin/list');
 
     };
 
