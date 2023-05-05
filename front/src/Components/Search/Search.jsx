@@ -61,7 +61,8 @@ export default function Search() {
     useEffect(() => {
         if (submitPressed) {
             //go to SearchPage
-            navigate('/search' + location.search);
+            navigate(
+                '/search' + location.search,{replace:true});
             setSubmitPressed(false);
         }
     }, [submitPressed, location.search, navigate]);

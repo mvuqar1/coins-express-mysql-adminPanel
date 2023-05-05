@@ -5,7 +5,8 @@ import Search from '../../Components/Search/Search'
 
 export default function SearchPage() {
     const [serachList, setSearchList] = useState([])
-    // eslint-disable-next-line no-unused-vars
+    //                                                                       ????????????????????????????
+    // eslint-disable-next-line no-unused-vars                       
     const [urlSearch, setUrlSearch] = useSearchParams()
 
     useEffect(() => {
