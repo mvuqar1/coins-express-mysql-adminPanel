@@ -13,13 +13,17 @@ export default function SearchPage() {
         getSearch("", urlSearch.toString())
             .then(data => setSearchList(data))
     }, [urlSearch])
+
+    const submitForm=(value)=>{
+        setUrlSearch(value)
+    }
     return (
         <>
             <h1>Search Page</h1>
             <p className="to-home">
                 <Link to={"/"}>Homepage</Link>— List of the coins
             </p>
-            <Search />
+            <Search submitForm={(formValues)=>submitForm(formValues)} />
             <div className="list">
                 {serachList.length>0 && serachList.map(item => (
                     <div className="list-coins" >

@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+
 import "./Search.css"
 import AdvancedPage from './AdvancedPage//AdvancedPage';
 import arrow from "./img/arrow.png"
 import { useSearchParams } from 'react-router-dom';
 
 
-export default function Search() {
+export default function Search({submitForm}) {
     const [isRotated, setIsRotated] = useState(false);
+    // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
+   
+
     // const [formValues, setFormValues] = useState({
     //     search: searchParams.get("search"),
     //     country: searchParams.get("country"),
@@ -22,10 +25,7 @@ export default function Search() {
     const [formValues, setFormValues] = useState(Object.fromEntries(searchParams.entries()))       //___???????
 
 
-    const navigate = useNavigate();
-    const location = useLocation()
-
-    const [submitPressed, setSubmitPressed] = useState(false)
+   
 
 
     function handlerRotate() {
@@ -41,31 +41,10 @@ export default function Search() {
 
     const submitFormHandler = (e) => {
         e.preventDefault()
-        // const formData = new FormData(e.target);
-        // const formDataToArray = [...formData.entries()]
-
-        // const finalData = {}
-        // formDataToArray.forEach(item => { // [ country: Canada ]
-        //     if (item[1]) {
-        //         finalData[item[0]] = item[1]
-        //     }
-        // })
-
-        // setSearchParams(finalData)
-
-        setSearchParams(formValues)
-
-        setSubmitPressed(true)
+        submitForm(formValues)
     }
 
-    useEffect(() => {
-        if (submitPressed) {
-            //go to SearchPage
-            navigate(
-                '/search' + location.search,{replace:true});
-            setSubmitPressed(false);
-        }
-    }, [submitPressed, location.search, navigate]);
+  
 
     return (
         <form onChange={searchOnChangeHandler} onSubmit={submitFormHandler} className="form">
@@ -86,3 +65,16 @@ export default function Search() {
         </form >
     )
 }
+
+
+   // const formData = new FormData(e.target);
+        // const formDataToArray = [...formData.entries()]
+
+        // const finalData = {}
+        // formDataToArray.forEach(item => { // [ country: Canada ]
+        //     if (item[1]) {
+        //         finalData[item[0]] = item[1]
+        //     }
+        // })
+
+        // setSearchParams(finalData)
