@@ -9,20 +9,24 @@ import { Link, useLocation, useNavigate, useSearchParams } from "react-router-do
 const HomePage = () => {
 
     const [categories, setCategories] = useState([])
-    const [submitPressed, setSubmitPressed] = useState(false)
-
-    const navigate = useNavigate();
-    const location = useLocation()
-    // eslint-disable-next-line no-unused-vars
-    const [searchParams, setSearchParams] = useSearchParams();
-
-
+    
     useEffect(() => {
         getCategories().then(data => {
             setCategories(data)
         })
     }, [])
 
+
+
+
+    
+    
+    const [submitPressed, setSubmitPressed] = useState(false)
+    const navigate = useNavigate();
+    const location = useLocation()
+    // eslint-disable-next-line no-unused-vars
+    const [searchParams, setSearchParams] = useSearchParams();
+    
     useEffect(() => {
         if (submitPressed) {
             //go to SearchPage
@@ -31,7 +35,7 @@ const HomePage = () => {
             setSubmitPressed(false);
         }
     }, [submitPressed, location.search, navigate]);
-    
+
 
     const submitForm = (values) => {
         setSubmitPressed(true)

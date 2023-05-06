@@ -23,7 +23,8 @@ export default function SearchPage() {
             <p className="to-home">
                 <Link to={"/"}>Homepage</Link>— List of the coins
             </p>
-            <Search submitForm={(formValues)=>submitForm(formValues)} />
+            {/* <Search submitForm={(formValues)=>submitForm(formValues)} /> */}
+            <Search submitForm={submitForm} />
             <div className="list">
                 {serachList.length>0 && serachList.map(item => (
                     <div className="list-coins" >
