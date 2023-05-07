@@ -36,7 +36,6 @@ const HomePage = () => {
         }
     }, [submitPressed, location.search, navigate]);
 
-
     const submitForm = (values) => {
         setSubmitPressed(true)
         setSearchParams(values)

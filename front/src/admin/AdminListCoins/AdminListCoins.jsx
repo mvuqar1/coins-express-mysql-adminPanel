@@ -13,7 +13,7 @@ export default function AdminListCoins(props) {
 
 
   const adminEditCoin=(item)=>{
-    navigate(`/admin/list/edit/${item.id}`, { state: { isAuthenticated: true } })
+    navigate(`/admin/list/edit/${item.id}`,{replace:true})
   }
 
 //   const location=useLocation()
@@ -45,7 +45,7 @@ export default function AdminListCoins(props) {
               <div>
                 
                 {/* go to CoinDetail */}
-                <Link to={`/products/${item.id}`} state={{ url:true }}>
+                <Link to={`/products/${item.id}`}>
                   <p className="admin-list-title">{item.title}</p>
                 </Link>
 

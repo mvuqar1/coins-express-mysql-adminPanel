@@ -19,7 +19,7 @@ const ListOfCoins = () => {
 
 
 
-    
+
 
 
     const [submitPressed, setSubmitPressed] = useState(false)
@@ -27,6 +27,7 @@ const ListOfCoins = () => {
     const location = useLocation()
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
+    
     useEffect(() => {
         if (submitPressed) {
             //go to SearchPage
@@ -39,6 +40,7 @@ const ListOfCoins = () => {
         setSubmitPressed(true)
         setSearchParams(values)
     }
+
 
     return (
         <div>
