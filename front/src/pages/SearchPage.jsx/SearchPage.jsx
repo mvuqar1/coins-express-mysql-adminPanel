@@ -27,7 +27,7 @@ export default function SearchPage() {
             <Search submitForm={submitForm} />
             <div className="list">
                 {serachList.length>0 && serachList.map(item => (
-                    <div className="list-coins" >
+                    <div className="list-coins" key={item.id} >
                         <div>
                             <img className="list-image" src={item.image} alt="category pic" />
                         </div>

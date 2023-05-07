@@ -25,9 +25,6 @@ export default function Search({submitForm}) {
     const [formValues, setFormValues] = useState(Object.fromEntries(searchParams.entries()))       //___???????
 
 
-   
-
-
     function handlerRotate() {
         setIsRotated(prevState => !prevState);
     }
@@ -41,6 +38,9 @@ export default function Search({submitForm}) {
 
     const submitFormHandler = (e) => {
         e.preventDefault()
+        if (Object.keys(formValues).length === 0) {
+          return;
+        }
         submitForm(formValues)
     }
 
@@ -50,7 +50,7 @@ export default function Search({submitForm}) {
         <form onChange={searchOnChangeHandler} onSubmit={submitFormHandler} className="form">
             <label>
                 <p>Input field</p>
-                <input className="category-input" name="search" value={formValues.search} onChange={searchOnChangeHandler} />
+                <input className="category-input" name="search" value={formValues.search || ''} onChange={searchOnChangeHandler} />
                 <input className="search-btn" type="submit" value="Search" />
             </label>
             <div className="advance" onClick={handlerRotate}>

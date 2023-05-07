@@ -75,3 +75,65 @@ const ListOfCoins = () => {
 }
 
 export default ListOfCoins
+
+
+
+
+// import { useEffect, useState } from "react"
+// import { Link,useParams} from "react-router-dom"
+// import { getSearch } from '../../API/Api'
+// import "./ListOfCoins.css"
+// import Search from "../../Components/Search/Search"
+// import goToSearch from "../../hooks/goToSearchPage"
+
+
+// const ListOfCoins = () => {
+
+//     const params = useParams()
+//     const { id } = params;
+//     const [coins, setCoins] = useState([])
+
+//     useEffect(() => {
+//         getSearch(id, "").then(data => {
+//             setCoins(data)
+//         })
+//     }, [id])
+
+//         const submitForm = (values) => {
+//         goToSearch(values)
+       
+//     }
+
+//     return (
+//         <div>
+//             <h1>List Of Coins</h1>
+
+//             <p className="to-home">
+//                 <Link to={"/"}>Homepage</Link>— List of the coins
+//             </p>
+
+//             <Search submitForm={submitForm} />
+
+
+//             <div className="list">
+//                 {coins.map(item => (
+//                     //go to CoinDetail     gategory/id/:coinId
+//                     <Link to={`/products/${item.id}`} key={item.id}>
+//                         <div className="list-coins" >
+//                             <div>
+//                                 <img className="list-image" src={item.image} alt="category pic" />
+//                             </div>
+//                             <div>
+//                                 <p className="list-title">{item.title}</p>
+//                                 <p className="list-short-desc">{item.short_desc}</p>
+//                             </div>
+//                         </div>
+//                     </Link>
+//                 ))
+//                 }
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default ListOfCoins
