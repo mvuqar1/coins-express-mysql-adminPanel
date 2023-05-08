@@ -16,11 +16,13 @@ export default function AdminEditCoin() {
         });
     }, [param.id, setCoin]);
 
-    const cancelHandle = (e) => {
-        e.preventDefault()
-        navigate('/admin/list');
-    }
-
+  const cancelHandle = (e) => {
+    e.preventDefault();
+    navigate({
+        pathname: "/admin/list",
+        replace: true
+    });
+}
     const handleInputChange = (event) => {
         const { name, value } = event.target;
 

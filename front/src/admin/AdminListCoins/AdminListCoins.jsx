@@ -16,15 +16,8 @@ export default function AdminListCoins(props) {
     navigate(`/admin/list/edit/${item.id}`,{replace:true})
   }
 
-//   const location=useLocation()
-//   const fromAdmin = location.state?.isAuthenticated;
 
-// useEffect(()=>{
-//   if(!fromAdmin)
-//   navigate('/admin/list', { state: { isAuthenticated: true } });
-// },[fromAdmin,navigate])
-
-  const btnId = (id) => {
+  const adminDeleteCoin = (id) => {
     deleteCoin(id)
       .then(() => setDeletedCoinId(id))
   }
@@ -54,7 +47,7 @@ export default function AdminListCoins(props) {
             </div>
             <div className='admin-list-right'>
               <button className='grey-button' onClick={()=>adminEditCoin(item)}>Edit</button>
-              <button className='grey-button' onClick={() => btnId(item.id)}>Delete</button>
+              <button className='grey-button' onClick={() => adminDeleteCoin(item.id)}>Delete</button>
             </div>
           </div>
         )
