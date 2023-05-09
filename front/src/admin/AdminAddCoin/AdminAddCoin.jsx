@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
 import "./AdminAddCoin.css"
-import { useLocation, useNavigate } from 'react-router-dom';
-import { postCoin } from '../../API/Api';
+import { useNavigate } from 'react-router-dom';
+import { getCategories, postCoin } from '../../API/Api';
 
 export default function AdminAddCoin() {
   const navigate = useNavigate()
+  const [category, setCategory] = useState("")
   const [coin, setCoin] = useState([{
     title: '',
     category_id: '',
@@ -21,12 +22,12 @@ export default function AdminAddCoin() {
     image2: '',
   }]);
 
-  const location=useLocation()
-  const fromAdmin = location.state?.isAuthenticated;
+
   useEffect(()=>{
-    if(!fromAdmin)
-    navigate('/admin');
-  },[fromAdmin,navigate])
+    getCategories().then((data) => {
+      setCategory(data);
+    })
+  },[])
 
   const cancelHandle = (e) => {
     e.preventDefault()
@@ -35,7 +36,6 @@ export default function AdminAddCoin() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name,value)
 
     setCoin(coin => ([{
       ...coin[0],
@@ -67,7 +67,12 @@ export default function AdminAddCoin() {
               </div>
               <div className="add-detail">
                 <label htmlFor="name">Category id</label>
-                <input name='category_id' type="text" value={item.category_id} onChange={(e) => handleInputChange(e)} />
+                <select name='category_id' type="text" value={item.category_id} onChange={(e) => handleInputChange(e)} >
+                  <option value={""}>Select</option>
+                  {category && category.map((item)=>(
+                    <option value={item.id} key={item.name}>{item.name}</option>
+                  ))}
+              </select>
               </div>
               <div className="add-detail">
                 <label htmlFor="name">Year of issue</label>

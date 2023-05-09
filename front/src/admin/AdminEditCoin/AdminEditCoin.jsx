@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import "./AdminEditCoin.css"
-import { getCoin, putCoin } from '../../API/Api'
+import { getCategories, getCoin, putCoin } from '../../API/Api'
 import { useNavigate } from 'react-router-dom';
 
 export default function AdminEditCoin() {
     const navigate = useNavigate()
     const [coin, setCoin] = useState("")
+    const [category, setCategory] = useState("")
 
     const param = useParams()
 
@@ -14,14 +15,14 @@ export default function AdminEditCoin() {
         getCoin(param.id).then((data) => {
             setCoin(data);
         });
+        getCategories().then((data)=>{
+            setCategory(data)
+        })
     }, [param.id, setCoin]);
 
   const cancelHandle = (e) => {
     e.preventDefault();
-    navigate({
-        pathname: "/admin/list",
-        replace: true
-    });
+    navigate(-1);
 }
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -43,6 +44,7 @@ export default function AdminEditCoin() {
 
     return (
         <div className='edit-containet'>
+
             <h1>Admin Panel</h1>
             <div className="edit-datails">
                 {coin && coin.map((item) => (
@@ -56,7 +58,12 @@ export default function AdminEditCoin() {
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Category id</label>
-                                <input name='category_id' type="text" value={item.category_id} onChange={(e) => handleInputChange(e)} />
+                                <select name='category_id' type="text" value={item.category_id} onChange={(e) => handleInputChange(e)} >
+                                <option value="">Select</option>
+                                    {category && category.map((item)=>(
+                                        <option value={item.id} key={item.id}>{item.name}</option>
+                                    ))}
+                                    </select>
                             </div>
                             <div className="edit-detail">
                                 <label htmlFor="name">Year of issue</label>

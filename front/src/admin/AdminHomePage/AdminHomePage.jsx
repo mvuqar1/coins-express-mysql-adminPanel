@@ -7,14 +7,19 @@ import { Link, useSearchParams } from 'react-router-dom'
 
 export default function AdminList() {
   const [coins, setCoins] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams()
   const [submitPressed, setSubmitPressed] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
-    getAllCoins().then((data) => {
-      setCoins(data);
-    });
-  }, [searchParams]);
+    if (searchParams.toString()) {
+      getSearch("", searchParams.toString())
+        .then(data => setCoins(data))
+    } else {
+      getAllCoins().then((data) => {
+        setCoins(data);
+      });
+    }
+  }, [searchParams, coins]);
 
 
   useEffect(() => {
@@ -23,8 +28,7 @@ export default function AdminList() {
         .then(data => setCoins(data))
     }
     setSubmitPressed(false)
-
-  },[submitPressed,searchParams])
+  }, [submitPressed, searchParams])
 
 
   const submitForm = (values) => {

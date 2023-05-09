@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<HomePage/>} />
           <Route path='/categories/:id' element={<ListOfCoins/>} />
-          <Route path='/products/:coinId' element={<CoinDetail />} />
+          <Route path='/products/:coinId' element={<UserContextProvider><CoinDetail /></UserContextProvider>} />
           <Route path='/search' element={<SearchPage />} />
           <Route path='/admin' element={<UserContextProvider><Admin/></UserContextProvider>} />
           <Route path='/admin/*' element={<UserContextProvider><AdminRoute/></UserContextProvider>} />

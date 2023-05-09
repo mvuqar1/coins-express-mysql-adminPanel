@@ -28,7 +28,7 @@
     color: #000000;
 }
 
-.edit-detail input {
+.edit-detail input, select {
     padding: 3px;
     margin-top: 5px;
     height: 47.75px;

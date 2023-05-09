@@ -42,6 +42,14 @@ export default function Search({submitForm}) {
           return;
         }
         submitForm(formValues)
+        if (isRotated) {
+            handlerRotate()
+          }
+          setFormValues(prevState => ({
+            ...prevState,
+            search: ""
+          })
+          )
     }
 
   

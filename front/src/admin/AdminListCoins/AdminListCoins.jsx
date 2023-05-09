@@ -13,7 +13,7 @@ export default function AdminListCoins(props) {
 
 
   const adminEditCoin=(item)=>{
-    navigate(`/admin/list/edit/${item.id}`,{replace:true})
+    navigate(`/admin/list/edit/${item.id}`)
   }
 
 

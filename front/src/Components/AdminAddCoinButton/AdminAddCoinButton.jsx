@@ -6,7 +6,7 @@ export default function AdminAddCoin() {
     return (
         <>
             <div className="add-coin-container">
-                <Link to={"/admin/add"} state={{ isAuthenticated:true }}>
+                <Link to={"/admin/add"}>
                     <div className='add-round'>
                         <p>+</p>
                     </div>
