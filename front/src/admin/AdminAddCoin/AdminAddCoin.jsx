@@ -31,7 +31,7 @@ export default function AdminAddCoin() {
 
   const cancelHandle = (e) => {
     e.preventDefault()
-    navigate('/admin/list');
+    navigate(-1);
   }
 
   const handleInputChange = (e) => {
