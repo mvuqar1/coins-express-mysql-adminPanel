@@ -16,6 +16,17 @@ export default function AdminAddCoin() {
                 </Link>
 
             </div >
+            <div className="add-coin-container">
+                <Link to={"/admin/add2"}>
+                    <div className='add-round'>
+                        <p>+</p>
+                    </div>
+                    <div className="add-link">
+                        Add UPLOAD
+                    </div>
+                </Link>
+
+            </div >
         </>
     )
 }
