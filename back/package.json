@@ -2,12 +2,10 @@
   "name": "back",
   "version": "1.0.0",
   "main": "index.js",
-  "engines": {
-    "node":"14"
-  },
+  "type": "module",
+ 
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
