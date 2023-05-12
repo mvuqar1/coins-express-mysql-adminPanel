@@ -55,16 +55,16 @@ export default function AdminAddCoin() {
 
   const handleUploadImage = (e, imageType) => {
     const all=e.target
-    const file=all.files[0]
+    const originFileObj=all.files[0]
  
 
-    const { name, lastModified, type } = file;
-    console.log(file)
+    const { name, lastModified, type } = originFileObj;
+    console.log(originFileObj)
     const nameArr = name.split('.')
     const finalReferenceName = nameArr[0] + lastModified + '.' + nameArr[1]
     const storageRef = ref(storage, finalReferenceName);
 
-    uploadBytes(storageRef, file).then((snapshot) => {
+    uploadBytes(storageRef, originFileObj).then((snapshot) => {
       getDownloadURL(snapshot.ref).then(url => {
         console.log(url)
 
