@@ -12,14 +12,23 @@ const PORT = 3001;
 
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
-  host: "brehhu1gyxjrri72pirs-mysql.services.clever-cloud.com",
-  port: 3306, // опционально, если вы используете порт отличный от стандартного
-  user: "u3yhc9h0zeb5fgf0",
-  password: "gncznyTaXLVzThzHph6P",
-  database: "brehhu1gyxjrri72pirs"
-});
+// const connection = mysql.createConnection({
+//   host: "brehhu1gyxjrri72pirs-mysql.services.clever-cloud.com",
+//   port: 3306, // опционально, если вы используете порт отличный от стандартного
+//   user: "u3yhc9h0zeb5fgf0",
+//   password: "gncznyTaXLVzThzHph6P",
+//   database: "brehhu1gyxjrri72pirs"
+// });
 
+const connection = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB-USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DBNAME,
+  waitForConnections: true,
+  connectionLimit:10,
+  queueLimit:0
+});
 
 // const connection = mysql.createConnection({
 //   host: "localhost",
@@ -336,9 +345,42 @@ app.get("/options", (req, res) => {
 
 
 
-app.listen(PORT, () => {
-  console.log('listening to port: ', PORT)
+// app.listen(PORT, () => {
+//   console.log('listening to port: ', PORT)
+// })
+
+connection.getConnection((err,conn) => {
+  if(err) console.log(err)
+  console.log("connected succes")
 })
+
+module.exports=connection.promise()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const express = require('express');
 // const cors = require('cors');
