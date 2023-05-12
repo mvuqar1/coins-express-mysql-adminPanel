@@ -12,13 +12,6 @@ const PORT = 3001;
 
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
-  host: "brehhu1gyxjrri72pirs-mysql.services.clever-cloud.com",
-  port: 3306, // опционально, если вы используете порт отличный от стандартного
-  user: "u3yhc9h0zeb5fgf0",
-  password: "gncznyTaXLVzThzHph6P",
-  database: "brehhu1gyxjrri72pirs"
-});
 // const connection = mysql.createConnection({
 //   host: "brehhu1gyxjrri72pirs-mysql.services.clever-cloud.com",
 //   port: 3306, // опционально, если вы используете порт отличный от стандартного
@@ -27,14 +20,14 @@ const connection = mysql.createConnection({
 //   database: "brehhu1gyxjrri72pirs"
 // });
 
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   port: 3306, // опционально, если вы используете порт отличный от стандартного
-//   user: "root",
-//   password: "test",
-//   database: "final_project"
-// });
 
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306, // опционально, если вы используете порт отличный от стандартного
+  user: "root",
+  password: "test",
+  database: "final_project"
+});
 
 connection.connect((err) => {
   if (err) {
@@ -360,13 +353,6 @@ app.listen(PORT, () => {
 
 // const mysql = require("mysql");
 
-// const connection = mysql.createConnection({
-//   host: "brehhu1gyxjrri72pirs-mysql.services.clever-cloud.com",
-//   port: 3306, // опционально, если вы используете порт отличный от стандартного
-//   user: "u3yhc9h0zeb5fgf0",
-//   password: "gncznyTaXLVzThzHph6P",
-//   database: "brehhu1gyxjrri72pirs"
-// });
 // // const connection = mysql.createConnection({
 // //   host: "brehhu1gyxjrri72pirs-mysql.services.clever-cloud.com",
 // //   port: 3306, // опционально, если вы используете порт отличный от стандартного
@@ -375,14 +361,14 @@ app.listen(PORT, () => {
 // //   database: "brehhu1gyxjrri72pirs"
 // // });
 
-// // const connection = mysql.createConnection({
-// //   host: "localhost",
-// //   port: 3306, // опционально, если вы используете порт отличный от стандартного
-// //   user: "root",
-// //   password: "test",
-// //   database: "final_project"
-// // });
 
+// const connection = mysql.createConnection({
+//   host: "localhost",
+//   port: 3306, // опционально, если вы используете порт отличный от стандартного
+//   user: "root",
+//   password: "test",
+//   database: "final_project"
+// });
 
 // connection.connect((err) => {
 //   if (err) {

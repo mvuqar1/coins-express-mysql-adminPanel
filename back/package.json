@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "engines": {
-    "node":"14.x"
+    "node":"14"
   },
   "scripts": {
     "start": "node index.js",
@@ -20,22 +20,3 @@
   },
   "description": ""
 }
-// {
-//   "name": "back",
-//   "version": "1.0.0",
-//   "main": "index.js",
-//   "scripts": {
-//     "start": "node index.js",
-//     "dev": "nodemon index.js"
-//   },
-//   "keywords": [],
-//   "author": "",
-//   "license": "ISC",
-//   "dependencies": {
-//     "cors": "^2.8.5",
-//     "express": "^4.18.2",
-//     "mysql": "^2.18.1",
-//     "nodemon": "^2.0.22"
-//   },
-//   "description": ""
-// }
