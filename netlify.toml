@@ -1,7 +1,7 @@
-[build]
-  publish = "front/build"
-  command = "cd front && npm install && npm run build"
-
 [dev]
   command = "cd back && npm install && npm run dev"
   functions = "front/build/functions"
+
+[build]
+  publish = "front/build"
+  command = "cd front && npm install && npm run build"
