@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 
-const PORT = https://coins-express-mysql-admin-panel.vercel.app;
+const PORT = 3001;
 
 
 const mysql = require("mysql");
