@@ -28,6 +28,7 @@ const connection = mysql.createConnection({
 //   database: "final_project"
 // });
 
+
 connection.connect((err) => {
   if (err) {
     console.error("Ошибка подключения к базе данных: " + err.stack);
