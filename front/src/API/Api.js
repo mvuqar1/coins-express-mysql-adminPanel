@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001'
+const baseUrl = 'https://coins-express-mysql-admin-panel-ostl.vercel.app'
 
 const getAllCoins = async () => {
   const res = await fetch(`${baseUrl}/all`);
