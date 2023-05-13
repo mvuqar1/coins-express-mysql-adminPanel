@@ -11,13 +11,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
-app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 const PORT = 3001;
-
 
 const mysql = require("mysql");
 
@@ -28,6 +25,7 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE
 });
+
 
 // const connection = mysql.createConnection({
 //   host: "brehhu1gyxjrri72pirs-mysql.services.clever-cloud.com",
