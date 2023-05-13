@@ -1,4 +1,4 @@
-const baseUrl = 'https://coins-express-mysql-admin-panel.vercel.app'
+const baseUrl = 'https://coins-express-mysql-admin-panel-cr7u.vercel.app/'
 
 
 
