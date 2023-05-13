@@ -4,16 +4,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-app.use(
-  cors({
-  origin:"*",
-}));
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
+app.use(cors());
 
 const PORT = 3001;
 
@@ -26,6 +17,7 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE
 });
+
 
 
 // const connection = mysql.createConnection({
