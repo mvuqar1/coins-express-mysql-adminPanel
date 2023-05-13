@@ -4,17 +4,12 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const corsOptions = {
-  origin: 'https://main--beautiful-sfogliatella-c42822.netlify.app',
-  optionsSuccessStatus: 200 // некоторые старые браузеры (IE11, различные SmartTV) 204
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = "https://coins-express-mysql-admin-panel-cr7u.vercel.app";
+const PORT = 3001;
 
 const mysql = require("mysql");
 
