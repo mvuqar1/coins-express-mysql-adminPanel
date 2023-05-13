@@ -15,17 +15,6 @@ app.use((req, res, next) => {
 });
 
 
-app.use(
-  '/api',
-  createProxyMiddleware({
-    target: 'https://coins-express-mysql-admin-panel-cr7u.vercel.app',
-    changeOrigin: true,
-  })
-);
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 const PORT = 3001;
 
 const mysql = require("mysql");
