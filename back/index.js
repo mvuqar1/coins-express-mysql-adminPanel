@@ -4,6 +4,14 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+const corsOptions = {
+  origin: 'https://main--beautiful-sfogliatella-c42822.netlify.app',
+  optionsSuccessStatus: 200 // некоторые старые браузеры (IE11, различные SmartTV) 204
+};
+
+app.use(cors(corsOptions));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());
