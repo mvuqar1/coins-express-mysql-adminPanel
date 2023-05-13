@@ -1,15 +1,47 @@
 {
-    "version":2,
-    "builds":[
-        {
-            "src":"./index.js",
-            "use":"@vercel/node"
-        }
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
     ],
-    "routes":[
-        {
-            "src":"/(.*)",
-            "dest":"/"
-        }
+    "routes": [
+      {
+        "src": "/categories",
+        "dest": "index.js"
+      },
+      {
+        "src": "/categories/:id",
+        "dest": "index.js"
+      },
+      {
+        "src": "/categories/:id/:coinId",
+        "dest": "index.js"
+      },
+      {
+        "src": "/search",
+        "dest": "index.js"
+      },
+      {
+        "src": "/all/:id",
+        "dest": "index.js"
+      },
+      {
+        "src": "/all",
+        "dest": "index.js"
+      },
+      {
+        "src": "/acces",
+        "dest": "index.js"
+      },
+      {
+        "src": "/options",
+        "dest": "index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "index.js"
+      }
     ]
-}
+  }
