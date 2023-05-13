@@ -9,8 +9,10 @@ app.use(
   origin:"*",
 }));
 
-
-const { createProxyMiddleware } = require('http-proxy-middleware');
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 
 app.use(
