@@ -1,5 +1,38 @@
 const baseUrl = 'https://coins-express-mysql-admin-panel.vercel.app'
 
+
+
+const getCategories = async () => {
+  const res = await fetch(`${baseUrl}/categories`);
+  const data = await res.json();
+  if (res.ok) {
+    return data;
+  } else {
+    throw new Error('Failed to fetch categories');
+  }
+};
+
+const getDetail = async (id, coinId) => {
+  const res = await fetch(`${baseUrl}/categories/${id}/${coinId}`);
+  const data = await res.json();
+  if (res.ok) {
+    console.log(data);
+    return data;
+  } else {
+    throw new Error('Failed to fetch coin detail');
+  }
+};
+
+const getCoin = async (id) => {
+  const res = await fetch(`${baseUrl}/all/${id}`);
+  const data = await res.json();
+  if (res.ok) {
+    return data;
+  } else {
+    throw new Error('Failed to fetch coin');
+  }
+};
+
 const getAllCoins = async () => {
   const res = await fetch(`${baseUrl}/all`);
   const data = await res.json();
@@ -11,11 +44,7 @@ const getOptions = async () => {
   return data
 }
 
-const getCategories = async () => {
-  const res = await fetch(`${baseUrl}/categories`);
-  const data = await res.json();
-  return data
-}
+
 
 const getSearch = async (categoryId, searchQuery) => {
   //get category
@@ -31,18 +60,7 @@ const getSearch = async (categoryId, searchQuery) => {
     return data;
   }
 }
-const getDetail = async (id, coinId) => {
-  const res = await fetch(`${baseUrl}/categories/${id}/${coinId}`);
-  const data = await res.json();
-  console.log(data)
-  return data
-}
 
-const getCoin = async (id) => {
-  const res = await fetch(`${baseUrl}/all/${id}`)
-  const data = await res.json()
-  return data
-}
 
 const deleteCoin = async (id) => {
   try {
