@@ -1,13 +1,15 @@
 {
-    "headers": [
-      {
-        "source": "/categories",
-        "headers": [
-          {
-            "key": "Access-Control-Allow-Origin",
-            "value": "https://beautiful-sfogliatella-c42822.netlify.app"
-          }
-        ]
-      }
+    "version":2,
+    "builds":[
+        {
+            "src":"./index.js",
+            "use":"@vercel/node"
+        }
+    ],
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"/"
+        }
     ]
-  }
+}
