@@ -9,6 +9,18 @@ app.use(
   origin:"*",
 }));
 
+
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
+
+app.use(
+  '/api',
+  createProxyMiddleware({
+    target: 'https://coins-express-mysql-admin-panel-cr7u.vercel.app',
+    changeOrigin: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
