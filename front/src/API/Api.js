@@ -1,4 +1,4 @@
-const baseUrl = 'https://coins-express-mysql-admin-panel-cr7u.vercel.app'
+const baseUrl = 'https://coins-express-mysql-admin-panel.vercel.app'
 // const baseUrl = 'http://localhost:3001'
 
 
@@ -6,7 +6,7 @@ const baseUrl = 'https://coins-express-mysql-admin-panel-cr7u.vercel.app'
 const getCategories = async () => {
   const res = await fetch(`${baseUrl}/categories`);
   const data = await res.json();
-  console.log(data)
+  console.log(data )
   if (res.ok) {
     return data;
   } else {
