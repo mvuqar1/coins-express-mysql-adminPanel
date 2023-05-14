@@ -12,7 +12,7 @@ const HomePage = () => {
     
     useEffect(() => {
         getCategories().then(data => {
-            console.log(data)
+            // console.log(data)
             setCategories(data)
         })
     }, [])

@@ -3,8 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const bodyParser = require('body-parser');
+
 
 app.use(cors({ origin: "*" }));
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3001;
 
@@ -282,7 +285,10 @@ app.post('/all', (req, res) => {
 
 
 app.post('/acces', (req, res) => {
+  // console.log(req)
   const { email, password } = req.body
+  // // console.log(req)
+  // console.log(req.body)
 
   connection.query(`SELECT * from users where email = '${email}'`, (err, data) => {
     if (err) {

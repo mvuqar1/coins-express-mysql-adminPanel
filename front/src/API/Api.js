@@ -88,12 +88,13 @@ const putCoin = async (id, coin) => {
       body: JSON.stringify(coin)
     });
     const data = await res.json();
-    console.log(data);
+    return data
   } catch (error) {
     console.log(error);
   }
 }
 const postCoin = async (coin) => {
+  console.log(coin)
 
   try {
     const res = await fetch(`${baseUrl}/all`, {
@@ -104,7 +105,7 @@ const postCoin = async (coin) => {
       body: JSON.stringify(coin)
     });
     const data = await res.json();
-    console.log(data);
+    return data
   } catch (error) {
     console.log(error);
   }
@@ -121,6 +122,7 @@ const postAcces = async (acces) => {
     body: JSON.stringify(acces)
   });
   const data = await res.json();
+  console.log(data)
   return data;
 };
 
