@@ -348,7 +348,7 @@ app.get("/options", (req, res) => {
 
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://main--coins-express-mysql-admin-panel.netlify.app');
+  res.setHeader('Access-Control-Allow-Origin', 'https://main--beautiful-sfogliatella-c42822.netlify.app');
   next();
 });
 
